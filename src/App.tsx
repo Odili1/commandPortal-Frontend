@@ -1,24 +1,57 @@
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 // import { useEffect, useState } from "react"
 // import Hero from "./components/Hero"
 // import NavBar from "./components/NavBar"
 import MainLayout from "./layouts/MainLayout"
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
+import DashboardPage from "./pages/DashboardPage"
+import NotFoundPage from "./pages/NotFoundPage"
+import RequireAuth from "./components/RequireAuth"
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 
 // type Data = {
 //   data: string
 // }
 
 function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<MainLayout/>}>
-        <Route index element={<HomePage/>} />
+  // const router = createBrowserRouter(
+  //   createRoutesFromElements(
+  //     <Route path="/" element={<MainLayout/>}>
+  //       <Route index element={<HomePage/>} />
+  //       <Route path="/login" element={<LoginPage/>} />
+
+  //       {/* Authenticated-Protected Routes */}
+  //       <Route element={<RequireAuth/>}>
+  //         <Route path="/dashboard" element={<DashboardPage/>}/>
+  //       </Route>
+
+  //     </Route>
+  //       {/* Not Found Pages */}
+  //       <Route path="*" element={<NotFoundPage/>}/>
+  //   )
+  // )
+
+  const RouterContainer = 
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainLayout/>}>
+          <Route index element={<HomePage/>} />
+
+          {/* Authenticated-Protected Routes */}
+          <Route element={<RequireAuth/>}>
+            <Route path="/dashboard" element={<DashboardPage/>}/>
+          </Route>
+
+        </Route>
+
         <Route path="/login" element={<LoginPage/>} />
-      </Route>
-    )
-  )
+        {/* Not Found Pages */}
+        <Route path="*" element={<NotFoundPage/>}/>
+      </Routes>
+    </Router>
+
   // const [fetchData, setFetchData] = useState<Data | null>(null)
   
   // useEffect(() => {
@@ -39,7 +72,10 @@ function App() {
   // }, [])
 
   return (
-    <RouterProvider router={router}/>
+    <>
+      {RouterContainer}
+      <ToastContainer/>
+    </>
   )
 }
 
