@@ -1,12 +1,36 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 // import logo from '../assets/images/logo.png'
 import logo from '../assets/images/CommandSchoolLogo.jpg'
-import { useAppSelector } from '../features/store/hooks'
+import { useAppDispatch, useAppSelector } from '../features/store/hooks'
 import { selectUserId } from '../features/store/slices/authSlice'
-
+import { useLogoutMutation } from '../features/store/api/authApiSlice'
+import { logoutUser } from '../features/store/slices/authSlice'
+import { toast } from 'react-toastify'
+import { IError } from '../features/interfaces/userInfo'
 
 const NavBar = () => {
   const user = useAppSelector(selectUserId)
+
+  // ----- Testing logout -----
+  const location = useLocation()
+  const [logout] = useLogoutMutation()
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const handleLogout = async() => {
+    try {
+      console.log('Logout clicked:');
+      const response = await logout('').unwrap()
+      console.log('Logout response:', response);
+      dispatch(logoutUser())
+      // toast.success(response.data.message)
+      navigate('/login', {state:{from: location}})
+    } catch (error: unknown) {
+      console.log(error);
+      
+      const err = error as IError
+      toast.error(err.data?.message)
+    }
+  }
 
   return (
     <nav className="shadow-md bg-slate-100 fixed w-[100vw] z-10">
@@ -23,6 +47,8 @@ const NavBar = () => {
             <div className='flex items-center'>
               {!user && <Link to={'/login'} className='px-2 py-1 text-lg rounded md:px-4 md:py-2 text-white bg-blue-700 border-none hover:bg-blue-600'>Login</Link>}
             </div>
+            {/* Testing Logout */}
+            {user && <button onClick={handleLogout} className='px-2 py-1 text-lg rounded md:px-4 md:py-2 text-white bg-red-700 border-none hover:bg-red-600'>Logout</button>}
           </div>
         </div>
       </div>

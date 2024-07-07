@@ -13,7 +13,9 @@ import Spinner from '../components/Spinner'
 const LoginPage = () => {
     const navigate: NavigateFunction = useNavigate()
     const location = useLocation()
-    const from = location?.state.from?.pathname || '/dashboard'
+    const from = location?.state?.from?.pathname || '/dashboard'
+    console.log(location?.state?.from?.pathname);
+    
 
     const userRef = useRef<HTMLInputElement>(null!)
 
@@ -34,13 +36,11 @@ const LoginPage = () => {
         e.preventDefault()
         try {
             console.log({username, password});
-
+            
             const userData = await login({userId: username, password}).unwrap()
             
-            dispatch(setCredentials({
-                userId: userData.userId,
-                token: userData.access_token
-            }))
+            console.log(`LoginUserData: ${JSON.stringify(userData)}`);
+            dispatch(setCredentials({...userData}))
             
             setUsername('')
             setPassword('')
@@ -49,18 +49,18 @@ const LoginPage = () => {
             
             navigate(from, {replace: true})
         } catch (error: unknown) {
+            console.log(`Login Catch Error: ${JSON.stringify(error)}`);
             console.log(isLoading);
             const err = error as IError
-            toast.error(err.data.message)
-            console.log(`Login Catch Error: ${JSON.stringify(err)}`);
-            console.log(err.data.message)
-            console.log(err.data.statusCode)
-            console.log(err.data.error)
+            toast.error(err.data?.message)
+            // console.log(err.data.message)
+            // console.log(err.data.statusCode)
+            // console.log(err.data.error)
         }
     }
 
   return (
-    <section className="bg-indigo-50 min-h-[90vh]">
+    <section className="bg-indigo-50 min-h-[100vh]">
         <div className="container max-w-screen-md m-auto py-5">
             {isLoading ? <Spinner loading={isLoading}/> : <div className="bg-white rounded-xl shadow-md px-8 py-8 m-4">
                 <form onSubmit={handleSubmit}>

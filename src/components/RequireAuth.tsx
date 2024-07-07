@@ -1,16 +1,22 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom"
 import { useAppSelector } from "../features/store/hooks"
-import { selectCurrentToken } from "../features/store/slices/authSlice"
-
+import { toast } from "react-toastify"
+import { selectUserId } from "../features/store/slices/authSlice"
 
 const RequireAuth = () => {
-    const token = useAppSelector(selectCurrentToken)
-    console.log(`RequireAuth: ${token}`);
-    
     const location = useLocation()
+    // const navigate = useNavigate()
+
+    const userId = useAppSelector(selectUserId)
+
+    console.log(`RequireAuth: ${userId}`);
+    
+    if (!userId){
+      toast.error('Login to continue')
+    }
 
   return (
-    token
+    userId
       ? <Outlet/>
       : <Navigate to={'/login'} state={{from: location}} replace/>
   )

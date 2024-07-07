@@ -1,6 +1,6 @@
 export interface IUserInfo{
     userId: string,
-    token: string
+    // token: string
 }
 
 export interface IError{

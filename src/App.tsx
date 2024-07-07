@@ -36,6 +36,8 @@ function App() {
   const RouterContainer = 
     <Router>
       <Routes>
+        <Route path="/login" element={<LoginPage/>} />
+
         <Route path="/" element={<MainLayout/>}>
           <Route index element={<HomePage/>} />
 
@@ -46,7 +48,6 @@ function App() {
 
         </Route>
 
-        <Route path="/login" element={<LoginPage/>} />
         {/* Not Found Pages */}
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>

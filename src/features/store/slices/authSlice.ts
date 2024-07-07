@@ -25,8 +25,9 @@ const authSlice = createSlice({
             state.userInfo = action.payload
             localStorage.setItem('userInfo', JSON.stringify(action.payload))
         },
-        logout: (state) => {
+        logoutUser: (state) => {
             state.userInfo = null
+            console.log('logoutUser');
             localStorage.removeItem('userInfo')
         }
     }
@@ -36,12 +37,12 @@ const authSlice = createSlice({
 // Actions
 export const {
     setCredentials,
-    logout
+    logoutUser
 } = authSlice.actions
 
 
 // Selectors
-export const selectCurrentToken = (state: RootState) => state.auth.userInfo?.token
+// export const selectCurrentToken = (state: RootState) => state.auth.userInfo?.token
 export const selectUserId = (state: RootState) => state.auth.userInfo?.userId
 
 
