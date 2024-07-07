@@ -5,11 +5,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import MainLayout from "./layouts/MainLayout"
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
-import DashboardPage from "./pages/DashboardPage"
 import NotFoundPage from "./pages/NotFoundPage"
 import RequireAuth from "./components/RequireAuth"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
+import StudentDashboard from "./pages/dashboard/student/StudentDashboard"
+import DashboardLayout from "./layouts/DashboardLayout"
+
 
 // type Data = {
 //   data: string
@@ -40,13 +42,19 @@ function App() {
 
         <Route path="/" element={<MainLayout/>}>
           <Route index element={<HomePage/>} />
-
-          {/* Authenticated-Protected Routes */}
-          <Route element={<RequireAuth/>}>
-            <Route path="/dashboard" element={<DashboardPage/>}/>
-          </Route>
-
         </Route>
+        
+        {/* Authenticated-Protected Routes */}
+        <Route element={<RequireAuth/>}>
+          <Route element={<DashboardLayout/>}>
+            {/* Student Routes */}
+            <Route path="/st/dashboard">
+              <Route index element={<StudentDashboard/>}/>
+            </Route>
+          </Route>
+        </Route>
+        
+
 
         {/* Not Found Pages */}
         <Route path="*" element={<NotFoundPage/>}/>

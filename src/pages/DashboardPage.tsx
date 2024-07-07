@@ -1,8 +1,8 @@
 
 const DashboardPage = () => {
   return (
-    <div className="bg-blue-300">
-      
+    <div className="bg-black-300 h-screen">
+      <h1 className="mt-20">Hey</h1>
     </div>
   )
 }

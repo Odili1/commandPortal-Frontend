@@ -14,6 +14,7 @@ const LoginPage = () => {
     const navigate: NavigateFunction = useNavigate()
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/dashboard'
+    const navigateTo = from == '/' ? '/dashboard' : from
     console.log(location?.state?.from?.pathname);
     
 
@@ -47,7 +48,7 @@ const LoginPage = () => {
             toast.success('Login successful')
             console.log(isLoading);
             
-            navigate(from, {replace: true})
+            navigate(navigateTo, {replace: true})
         } catch (error: unknown) {
             console.log(`Login Catch Error: ${JSON.stringify(error)}`);
             console.log(isLoading);
