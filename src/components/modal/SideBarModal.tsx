@@ -13,7 +13,7 @@ const SideBarModal = () => {
     const dispatch = useAppDispatch()
 
     const nameClass = ({isActive}: {isActive: boolean}): string => {
-        return isActive ? 'text-standardBlue text-fontDarkColor py-3 pl-3 mb-5 bg-blue-100 self -center font-medium rounded-md' : 'text-fontDarkColor py-3 pl-3 mb-5 self-c enter font-medium rounded-md'
+        return isActive ? 'text-standardBlue text-fontDarkColor py-3 pl-3 mb-5 bg-blue-100 self -center font-medium rounded-md' : 'text-fontDarkColor py-3 pl-3 mb-5 font-medium rounded-md'
     }
 
   return (

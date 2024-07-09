@@ -5,11 +5,11 @@ import logo from "../../assets/images/CommandSchoolLogo.jpg"
 // import { useState } from "react"
 import SideBarModal from "../modal/SideBarModal"
 import { useAppDispatch, useAppSelector } from "../../features/store/hooks"
-import { setShowSideBarModal, showSideBarModal } from "../../features/store/slices/uiSlice"
+import { setShowSideBarModal, selectShowSideBarModal } from "../../features/store/slices/uiSlice"
 
 const DashboardHeader = () => {
   // const [showSideBarModal, setShowSideBarModal] = useState<boolean>(false)
-  const showMenuModal = useAppSelector(showSideBarModal)
+  const showMenuModal = useAppSelector(selectShowSideBarModal)
 
   const dispatch = useAppDispatch()
 

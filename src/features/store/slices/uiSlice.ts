@@ -2,11 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 type SliceState = {
-    showSideBarModal: boolean
+    showSideBarModal: boolean,
+    showLogoutModal: boolean
 }
 
 const initialState: SliceState = {
-    showSideBarModal: false
+    showSideBarModal: false,
+    showLogoutModal: false
 }
 
 const uiSlice = createSlice({
@@ -15,15 +17,20 @@ const uiSlice = createSlice({
     reducers: {
         setShowSideBarModal(state){
             state.showSideBarModal = !state.showSideBarModal
+        },
+        setShowLogoutModal(state){
+            state.showLogoutModal = !state.showLogoutModal
         }
     }
 })
 
 
 export const {
-    setShowSideBarModal
+    setShowSideBarModal,
+    setShowLogoutModal
 } = uiSlice.actions
 
-export const showSideBarModal = (state: RootState) => state.ui.showSideBarModal
+export const selectShowSideBarModal = (state: RootState) => state.ui.showSideBarModal
+export const selectShowLogoutModal = (state: RootState) => state.ui.showLogoutModal
 
 export default uiSlice
