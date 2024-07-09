@@ -2,13 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
     extend: {
-      screens: {
-        sm: '480px',
-        md: '768px',
-        lg: '976px',
-        xl: '1440px',
-      },
       fontFamily: {
         sans: ['Roboto', 'sans-serif']
       },
@@ -20,6 +20,15 @@ export default {
       },
       animation: {
         bubble: 'bubble 2s ease-in-out infinite'
+      },
+      colors: {
+        darkTrans: 'rgb(0, 0, 0, 0.4)',
+        darkerTrans: 'rgb(0, 0, 0, 0.7)',
+        standardBlue: 'rgb(29, 78,216)',
+        lightBlue: 'rgb(37 99 235)',
+        fontDarkColor: 'rgb(31 41 55)',
+        fontGrayColor: 'rgb(55 65 81)',
+        backgroundColor: 'rgb(241 245 249)' 
       }
     },
   },

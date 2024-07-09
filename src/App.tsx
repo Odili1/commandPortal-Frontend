@@ -11,6 +11,9 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 import StudentDashboard from "./pages/dashboard/student/StudentDashboard"
 import DashboardLayout from "./layouts/DashboardLayout"
+import Subjects from "./pages/dashboard/student/Subjects"
+import Results from "./pages/dashboard/student/Results"
+import StudentAnalysis from "./pages/dashboard/student/StudentAnalysis"
 
 
 // type Data = {
@@ -38,19 +41,23 @@ function App() {
   const RouterContainer = 
     <Router>
       <Routes>
-        <Route path="/login" element={<LoginPage/>} />
 
         <Route path="/" element={<MainLayout/>}>
           <Route index element={<HomePage/>} />
         </Route>
         
+        <Route path="/login" element={<LoginPage/>} />
+
         {/* Authenticated-Protected Routes */}
         <Route element={<RequireAuth/>}>
-          <Route element={<DashboardLayout/>}>
+          <Route path="" element={<DashboardLayout/>}>
             {/* Student Routes */}
-            <Route path="/st/dashboard">
-              <Route index element={<StudentDashboard/>}/>
-            </Route>
+            {/* <Route path="st"> */}
+              <Route path="st/dashboard" element={<StudentDashboard/>}/>
+              <Route path="/st/subjects" element={<Subjects/>}/>
+              <Route path="/st/results" element={<Results/>}/>
+              <Route path="/st/analysis" element={<StudentAnalysis/>}/>
+            {/* </Route> */}
           </Route>
         </Route>
         

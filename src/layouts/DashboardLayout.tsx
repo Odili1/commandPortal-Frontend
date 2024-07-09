@@ -6,8 +6,14 @@ const DashboardLayout = () => {
   return (
     <>
       <DashboardHeader/>
-      <Sidebar/>
-      <Outlet/>
+      <div className="pt-[86px] md:grid md:grid-cols-5">
+        <div className="hidden md:block">
+          <Sidebar/>
+        </div>
+        <div className="md:col-start-2 md:col-end-6">
+          <Outlet/>
+        </div>
+      </div>
     </>
   )
 }

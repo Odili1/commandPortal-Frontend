@@ -13,8 +13,8 @@ import Spinner from '../components/Spinner'
 const LoginPage = () => {
     const navigate: NavigateFunction = useNavigate()
     const location = useLocation()
-    const from = location?.state?.from?.pathname || '/dashboard'
-    const navigateTo = from == '/' ? '/dashboard' : from
+    const from = location?.state?.from?.pathname || '/st/dashboard'
+    const navigateTo = from == '/' ? '/st/dashboard' : from
     console.log(location?.state?.from?.pathname);
     
 
