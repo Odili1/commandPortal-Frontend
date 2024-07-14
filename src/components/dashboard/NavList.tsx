@@ -2,6 +2,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import { useAppDispatch } from "../../features/store/hooks"
 import { setShowLogoutModal, setShowSideBarModal } from "../../features/store/slices/uiSlice"
+import { useNavList } from "../../hooks/useNavList"
 // import useLogOut from "../../hooks/useLogout"
 
 type NavListProp = {
@@ -12,17 +13,23 @@ type NavListProp = {
 
 const NavList = ({nameClass}: NavListProp): React.JSX.Element => {
     const dispatch = useAppDispatch()
+    
+    const navLists = useNavList()
+    // const adminNavList = [
 
-    const navObjects = [
-        {to: 'st/dashboard', name: 'Dashboard'},
-        {to: 'st/subjects', name: 'Subjects'},
-        {to: 'st/bursary', name: 'Bursary'},
-        {to: 'st/results', name: 'Results'},
-        {to: 'st/analysis', name: 'Student Analysis'},
-        {to: '/logout', name: 'Logout'}
-    ]
+    // ]
+    // const studentNavList = [
+    //     {to: 'st/dashboard', name: 'Dashboard'},
+    //     {to: 'st/subjects', name: 'Subjects'},
+    //     {to: 'st/bursary', name: 'Bursary'},
+    //     {to: 'st/results', name: 'Results'},
+    //     {to: 'st/analysis', name: 'Student Analysis'},
+    //     {to: '/logout', name: 'Logout'}
+    // ]
 
-    const logOutStyle = (medium: boolean = false) => medium ? 'text-fontGrayColor md:border-b-2 md:hover:text-standardBlue md:font-semibold md:cursor-pointer' : 'text-fontDarkColor py-3 pl-3 mb-5 font-medium rounded-md'
+    const navObjects = navLists()
+
+    const logOutStyle = (medium: boolean = false) => medium ? 'text-fontGrayColor text-xl md:border-b-2 md:hover:text-standardBlue md:font-semibold md:cursor-pointer' : 'text-fontDarkColor py-3 pl-3 mb-5 font-medium rounded-md'
 
     const handleLogout = () => {
         // Close the SideBar Modal
@@ -32,7 +39,7 @@ const NavList = ({nameClass}: NavListProp): React.JSX.Element => {
     }
   return (
     <>
-        {navObjects.map((obj, i) => {
+        {navObjects?.map((obj, i) => {
             if (obj.to === '/logout'){
                 return (
                     <div onClick={handleLogout} className={`${logOutStyle()} md:${logOutStyle(true)}`} key={i}>{obj.name}</div>

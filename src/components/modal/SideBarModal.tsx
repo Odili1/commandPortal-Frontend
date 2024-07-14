@@ -18,7 +18,7 @@ const SideBarModal = () => {
 
   return (
     <>
-        <div className="absolute top-0 left-0 h-full bg-darkTrans w-full z-20 md:hidden">
+        <div className="fixed top-0 left-0 h-full bg-darkTrans w-full z-20 md:hidden">
           <div id="menu" className="w-[90%] h-full bg-backgroundColor drop-shadow-sm pt-6 px-4">
             <header className="flex items-center">
               {/* Ham Button */}

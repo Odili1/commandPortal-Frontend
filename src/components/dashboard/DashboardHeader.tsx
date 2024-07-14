@@ -17,7 +17,7 @@ const DashboardHeader = () => {
 
   return (
     <>
-      <header className="shadow-md bg-backgroundColor fixed w-[100vw] z-10">
+      <header className="shadow-md bg-white fixed w-[100vw] z-10">
         <div className="container mx-auto">
           <div className="flex items-center justify-between py-6 mx-4 md:mx-2">
             <div className="flex items-center">

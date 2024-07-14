@@ -7,22 +7,25 @@ import { useAppDispatch } from '../features/store/hooks'
 import { toast } from 'react-toastify'
 import { setCredentials } from '../features/store/slices/authSlice'
 import { IError } from '../features/interfaces/userInfo'
-import Spinner from '../components/Spinner'
+// import Spinner from '../components/Spinner'
+// isLoading ? <Spinner loading={isLoading}/> : 
 
 
 const LoginPage = () => {
     const navigate: NavigateFunction = useNavigate()
     const location = useLocation()
-    const from = location?.state?.from?.pathname || '/st/dashboard'
-    const navigateTo = from == ('/') ? '/st/dashboard' : from
-    console.log(location?.state?.from?.pathname);
     
-
+    
     const userRef = useRef<HTMLInputElement>(null!)
-
+    
     const [username, setUsername] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-
+    
+    // Dynamic Navigation
+    const prefix = username.toLowerCase().slice(0, 2)
+    const from = location?.state?.from?.pathname || `/${prefix}/dashboard`
+    const navigateTo = from == ('/') ? `/${prefix}/dashboard` : from
+    console.log(location?.state?.from?.pathname);
 
     const [login, {isLoading}] = useLoginMutation()
 
@@ -45,6 +48,8 @@ const LoginPage = () => {
             
             setUsername('')
             setPassword('')
+            
+            // Dynamic navigation
             toast.success('Login successful')
             console.log(isLoading);
             
@@ -53,6 +58,11 @@ const LoginPage = () => {
             console.log(`Login Catch Error: ${JSON.stringify(error)}`);
             console.log(isLoading);
             const err = error as IError
+
+            if (err.status === 500){
+                navigate('/error')
+            }
+
             toast.error(err.data?.message)
             // console.log(err.data.message)
             // console.log(err.data.statusCode)
@@ -63,7 +73,7 @@ const LoginPage = () => {
   return (
     <section className="bg-indigo-50 min-h-[100vh]">
         <div className="container max-w-screen-md m-auto py-5">
-            {isLoading ? <Spinner loading={isLoading}/> : <div className="bg-white rounded-xl shadow-md px-8 py-8 m-4">
+            {<div className="bg-white rounded-xl shadow-md px-8 py-8 m-4">
                 <form onSubmit={handleSubmit}>
                     <img className='mx-auto mt-8 mb-14 h-32 rounded-xl' src={logo} alt="" />
                     <h2 className='text-center font-bold text-2xl mb-6'>Welcome to Command Children School, Calabar</h2>

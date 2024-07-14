@@ -14,6 +14,10 @@ import DashboardLayout from "./layouts/DashboardLayout"
 import Subjects from "./pages/dashboard/student/Subjects"
 import Results from "./pages/dashboard/student/Results"
 import StudentAnalysis from "./pages/dashboard/student/StudentAnalysis"
+import AdminDashboard from "./pages/dashboard/admin/Dashboard.admin"
+import AdminAnalysis from "./pages/dashboard/admin/Analysis.admin"
+import AdminProfile from "./pages/dashboard/admin/Profile.admin"
+import ErrorPage from "./pages/ErrorPage"
 
 
 // type Data = {
@@ -51,18 +55,25 @@ function App() {
         {/* Authenticated-Protected Routes */}
         <Route element={<RequireAuth/>}>
           <Route path="" element={<DashboardLayout/>}>
+            {/* Admin Routes */}
+            <Route path="ad/dashboard" element={<AdminDashboard/>}/>
+            <Route path="/ad/profile" element={<AdminProfile/>}/>
+            <Route path="/ad/analysis" element={<AdminAnalysis/>}/>
+            
             {/* Student Routes */}
             {/* <Route path="st"> */}
-              <Route path="st/dashboard" element={<StudentDashboard/>}/>
-              <Route path="/st/subjects" element={<Subjects/>}/>
-              <Route path="/st/results" element={<Results/>}/>
-              <Route path="/st/analysis" element={<StudentAnalysis/>}/>
+            <Route path="st/dashboard" element={<StudentDashboard/>}/>
+            <Route path="/st/subjects" element={<Subjects/>}/>
+            <Route path="/st/results" element={<Results/>}/>
+            <Route path="/st/analysis" element={<StudentAnalysis/>}/>
             {/* </Route> */}
           </Route>
         </Route>
         
 
-
+        {/* Internal Server Error Page */}
+        <Route path="/error" element={<ErrorPage/>}/>
+        
         {/* Not Found Pages */}
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
@@ -90,7 +101,7 @@ function App() {
   return (
     <>
       {RouterContainer}
-      <ToastContainer/>
+      <ToastContainer pauseOnFocusLoss={false} pauseOnHover={false} draggable autoClose={2500}/>
     </>
   )
 }
