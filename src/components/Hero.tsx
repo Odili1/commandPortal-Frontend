@@ -17,9 +17,9 @@ const Hero = () => {
             <div className='relative self-center mb-14 md:mb-0'>
                 <img src={image} alt="" className='h-[300px] w-[350px] md:h-[450px] md:w-[500px]'/>
                 <div className=''>
-                    <svg className='absolute hidden right-0 bottom-12 animate-bubble md:block' xmlns="http://www.w3.org/2000/svg" width="29" height="46" viewBox="0 0 29 46" fill="none"><circle cx="14.4573" cy="8.15851" r="7.42425" stroke="white" stroke-width="1.46853"></circle><rect x="1.00287" y="31.7756" width="22.6301" height="14.8695" transform="rotate(-28.7902 1.00287 31.7756)" stroke="white" stroke-width="1.46853" stroke-linejoin="round"></rect></svg>
+                    <svg className='absolute hidden right-0 bottom-12 animate-bubble md:block' xmlns="http://www.w3.org/2000/svg" width="29" height="46" viewBox="0 0 29 46" fill="none"><circle cx="14.4573" cy="8.15851" r="7.42425" stroke="white" strokeWidth="1.46853"></circle><rect x="1.00287" y="31.7756" width="22.6301" height="14.8695" transform="rotate(-28.7902 1.00287 31.7756)" stroke="white" strokeWidth="1.46853" strokeLinejoin="round"></rect></svg>
 
-                    <svg className='absolute hidden left-2 top-2 animate-bubble md:block' xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39" fill="none"><circle cx="8.0489" cy="8.0489" r="7.07328" stroke="white" stroke-width="1.95125"></circle><circle cx="26.585" cy="15.8543" r="7.07328" stroke="white" stroke-width="1.95125"></circle><circle cx="29.5127" cy="33.4152" r="4.1464" stroke="white" stroke-width="1.95125"></circle></svg>
+                    <svg className='absolute hidden left-2 top-2 animate-bubble md:block' xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39" fill="none"><circle cx="8.0489" cy="8.0489" r="7.07328" stroke="white" strokeWidth="1.95125"></circle><circle cx="26.585" cy="15.8543" r="7.07328" stroke="white" strokeWidth="1.95125"></circle><circle cx="29.5127" cy="33.4152" r="4.1464" stroke="white" strokeWidth="1.95125"></circle></svg>
                     
                     <img className='absolute hidden right-0 top-2 animate-bubble md:block' src={bookIcon} alt="" />
                 </div>

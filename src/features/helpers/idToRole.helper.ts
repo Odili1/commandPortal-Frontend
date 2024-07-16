@@ -9,8 +9,7 @@ export const idToRole = (userId: string) => {
         return 'student'
     }else if (idPrefix === 'Th'){
         return 'teacher'
-    }else {
-        return undefined
+    }else{
+        return null
     }
 }
-

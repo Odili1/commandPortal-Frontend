@@ -2,8 +2,9 @@ import { idToRole } from "../features/helpers/idToRole.helper"
 import { useAppSelector } from "../features/store/hooks"
 import { selectUserId } from "../features/store/slices/authSlice"
 
+type useNavListReturnType = () => {to: string, name: string}[] | undefined
 
-export const useNavList = () => {
+export const useNavList = (): useNavListReturnType => {
     const userId = useAppSelector(selectUserId) || ''
 
     const role = idToRole(userId)
@@ -32,6 +33,7 @@ export const useNavList = () => {
 
     const studentNavList = [
         {to: 'st/dashboard', name: 'Dashboard'},
+        {to: 'st/profile', name: 'Profile'},
         {to: 'st/subjects', name: 'Subjects'},
         {to: 'st/bursary', name: 'Bursary'},
         {to: 'st/results', name: 'Results'},

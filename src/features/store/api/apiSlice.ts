@@ -1,5 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { BaseQueryApi, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
+import { logoutUser } from "../slices/authSlice";
+
 
 
 
@@ -17,11 +19,30 @@ const baseQuery = fetchBaseQuery({
     credentials: 'include'
 })
 
+const baseQueryWithReauth = async(
+    args: string | FetchArgs, 
+    api: BaseQueryApi, 
+    extraOptions: object) => {
+    const result = await baseQuery(args, api, extraOptions)
+        // console.log(`baseQueryWithReauth: ${api}`);
+        
+
+    if (result.error && (result.error as FetchBaseQueryError).status === 401){
+        // Dispatch logout
+        api.dispatch(logoutUser())
+
+        // Redirect to login
+        window.location.href = '/login'
+    }
+
+    return result
+}
+
 
 // eslint-disable-next-line no-unused-vars
 export const apiSlice = createApi({
     reducerPath: 'api',
-    baseQuery,
+    baseQuery: baseQueryWithReauth,
     endpoints: (builder) => ({})
 })
 

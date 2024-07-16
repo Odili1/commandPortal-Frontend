@@ -13,19 +13,7 @@ type NavListProp = {
 
 const NavList = ({nameClass}: NavListProp): React.JSX.Element => {
     const dispatch = useAppDispatch()
-    
     const navLists = useNavList()
-    // const adminNavList = [
-
-    // ]
-    // const studentNavList = [
-    //     {to: 'st/dashboard', name: 'Dashboard'},
-    //     {to: 'st/subjects', name: 'Subjects'},
-    //     {to: 'st/bursary', name: 'Bursary'},
-    //     {to: 'st/results', name: 'Results'},
-    //     {to: 'st/analysis', name: 'Student Analysis'},
-    //     {to: '/logout', name: 'Logout'}
-    // ]
 
     const navObjects = navLists()
 
@@ -37,6 +25,7 @@ const NavList = ({nameClass}: NavListProp): React.JSX.Element => {
         // Open the LogOut Modal
         dispatch(setShowLogoutModal())
     }
+
   return (
     <>
         {navObjects?.map((obj, i) => {

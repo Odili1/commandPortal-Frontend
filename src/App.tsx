@@ -18,6 +18,7 @@ import AdminDashboard from "./pages/dashboard/admin/Dashboard.admin"
 import AdminAnalysis from "./pages/dashboard/admin/Analysis.admin"
 import AdminProfile from "./pages/dashboard/admin/Profile.admin"
 import ErrorPage from "./pages/ErrorPage"
+import StudentProfile from "./pages/dashboard/student/Profile"
 
 
 // type Data = {
@@ -63,6 +64,7 @@ function App() {
             {/* Student Routes */}
             {/* <Route path="st"> */}
             <Route path="st/dashboard" element={<StudentDashboard/>}/>
+            <Route path="st/profile" element={<StudentProfile/>}/>
             <Route path="/st/subjects" element={<Subjects/>}/>
             <Route path="/st/results" element={<Results/>}/>
             <Route path="/st/analysis" element={<StudentAnalysis/>}/>

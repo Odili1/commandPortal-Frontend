@@ -1,9 +1,10 @@
-export interface IAdmin{
+export interface ITeacher{
     id: number,
     userId: string,
-    avatar: string,
+    avatar?: string
     firstName: string,
     lastName: string,
+    formClass?: string,
     user: {
         avatar?: string,
         email?: string,
@@ -11,5 +12,7 @@ export interface IAdmin{
         lastLogin: Date,
         updatedAt: Date,
         createdAt: Date
-    }
+    },
+    classDetails?: [],
+    subjects?: []
 }

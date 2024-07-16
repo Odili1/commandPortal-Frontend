@@ -5,15 +5,13 @@ import { selectUserId } from "../features/store/slices/authSlice"
 
 const RequireAuth = () => {
     const location = useLocation()
-    // const navigate = useNavigate()
-    // const token = document.cookie
 
     const userId = useAppSelector(selectUserId)
 
     console.log(`RequireAuth: ${userId}`);
     
     if (!userId ){
-      toast.error('Login to continue')
+      toast.error('Login to continue RA')
     }
 
   return (

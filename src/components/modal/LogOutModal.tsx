@@ -1,24 +1,43 @@
 import { Link } from "react-router-dom"
 import useLogOut from "../../hooks/useLogout"
-import { useAppDispatch } from "../../features/store/hooks"
-import { setShowLogoutModal } from "../../features/store/slices/uiSlice"
+import { useAppDispatch, useAppSelector } from "../../features/store/hooks"
+import { selectShowLogoutModal, setShowLogoutModal } from "../../features/store/slices/uiSlice"
+import { useEffect, useRef } from "react"
 
 
 
 
 const LogOutModal = () => {
-    const logout = useLogOut()
-
+    const modalRef = useRef<HTMLDivElement>(null)
     const dispatch = useAppDispatch()
+    
+    const logout = useLogOut()
+    const showModal = useAppSelector(selectShowLogoutModal)
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+          if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+            dispatch(setShowLogoutModal())
+          }
+        }
+        if (showModal){
+            document.addEventListener('mousedown', handleClickOutside)
+        }
+
+        return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [dispatch, showModal])
+
 
     const handleLogout = () => {
         dispatch(setShowLogoutModal())
         logout()
     }
 
+
+
   return (
     <div className="fixed h-[100%] w-full z-30 bg-darkTrans flex justify-center items-center">
-        <div className="container mx-auto w-[95%] min-h-[30%] bg-backgroundColor rounded-md px-8 py-10 md:w-[50%] md:h-[40%]">
+        <div className="container mx-auto w-[95%] min-h-[30%] bg-backgroundColor rounded-md px-8 py-10 md:w-[50%] md:h-[40%]" ref={modalRef}>
             <div>
                 <h2 className="mb-5 ml-4 font-bold text-md">Log Out</h2>
                 <div className="border-y-[1px] bg-slate-200"></div>

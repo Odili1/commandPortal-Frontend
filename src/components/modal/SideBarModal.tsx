@@ -13,7 +13,7 @@ const SideBarModal = () => {
     const dispatch = useAppDispatch()
 
     const nameClass = ({isActive}: {isActive: boolean}): string => {
-        return isActive ? 'text-standardBlue text-fontDarkColor py-3 pl-3 mb-5 bg-blue-100 self -center font-medium rounded-md' : 'text-fontDarkColor py-3 pl-3 mb-5 font-medium rounded-md'
+        return isActive ? 'text-standardBlue text-fontDarkColor py-3 pl-3 text-xl mb-5 bg-blue-100 self -center font-semibold rounded-md' : 'text-fontDarkColor py-3 pl-3 mb-5 font-medium text-xl rounded-md'
     }
 
   return (
@@ -29,8 +29,8 @@ const SideBarModal = () => {
 
               {/* Logo */}
               <div className="flex items-center ">
-                <img src={logo} alt="Logo" className='w-auto h-8 mr-2 rounded-md' />
-                <span className='font-bold md:block text-standardBlue text-[14px] ml-2'>
+                <img src={logo} alt="Logo" className='w-auto h-10 mr-2 rounded-md' />
+                <span className='font-bold md:block text-standardBlue text-[16px] ml-2'>
                   Command Children School,<br className=''/> Calabar
                 </span>
               </div> 
