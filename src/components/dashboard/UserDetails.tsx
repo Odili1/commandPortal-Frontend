@@ -2,9 +2,9 @@ import { formatDate } from "../../features/helpers/date.helper";
 import {
   CheckRole,
   userDataType,
-} from "../../features/helpers/typeGuard.helper";
+} from "../../features/helpers/typeGuards.helper";
 
-const UserDetails = ({ userData }: { userData: userDataType | null}) => {
+const UserDetails = ({ userData }: { userData: userDataType | null }) => {
   if (!userData) {
     console.log(`UserDetailsComponent: NO USER`);
 
@@ -12,14 +12,12 @@ const UserDetails = ({ userData }: { userData: userDataType | null}) => {
   }
 
   console.log(
-    `UserDetailsComponent: ${JSON.stringify(formatDate(userData.user.lastLogin))}`
+    `UserDetailsComponent: ${JSON.stringify(
+      formatDate(userData.user.lastLogin)
+    )}`
   );
-  console.log(
-    `UserDetailsComponent: ${typeof userData.user.lastLogin}`
-  );
-  console.log(
-    `UserDetailsComponent: ${JSON.stringify(userData.user)}`
-  );
+  console.log(`UserDetailsComponent: ${typeof userData.user.lastLogin}`);
+  console.log(`UserDetailsComponent: ${JSON.stringify(userData.user)}`);
 
   let user = {};
 
@@ -32,7 +30,7 @@ const UserDetails = ({ userData }: { userData: userDataType | null}) => {
       "Phone Number:": userData.user.phoneNumber || "null",
       "Last Login": formatDate(userData.user.lastLogin) || "null",
       "Last Update": formatDate(userData.user.updatedAt) || "null",
-      "Joined": formatDate(userData.user.createdAt) || "null"
+      Joined: formatDate(userData.user.createdAt) || "null",
     };
   }
 
@@ -46,7 +44,7 @@ const UserDetails = ({ userData }: { userData: userDataType | null}) => {
       "Phone Number:": userData.user.phoneNumber || "null",
       "Last Login": formatDate(userData.user.lastLogin) || "null",
       "Last Update": formatDate(userData.user.updatedAt) || "null",
-      "Joined": formatDate(userData.user.createdAt) || "null"
+      Joined: formatDate(userData.user.createdAt) || "null",
     };
   }
 
@@ -54,10 +52,10 @@ const UserDetails = ({ userData }: { userData: userDataType | null}) => {
     user = {
       "User ID:": userData.userId,
       "First Name:": userData.firstName,
-      "Middle Name:": userData.middleName || 'null',
+      "Middle Name:": userData.middleName || "null",
       "Last Name:": userData.lastName,
       "Age:": userData.age?.toString() || "null",
-      'Gender': userData.gender || "null",
+      Gender: userData.gender || "null",
       "Date of Birth:": userData.dateOfBirth || "null",
       "State of Origin:": userData.stateOfOrigin || "null",
       "Address:": userData.address || "null",
@@ -65,7 +63,7 @@ const UserDetails = ({ userData }: { userData: userDataType | null}) => {
       "Phone Number:": userData.user.phoneNumber || "null",
       "Last Login": formatDate(userData.user.lastLogin) || "null",
       "Last Update": formatDate(userData.user.updatedAt) || "null",
-      "Joined": formatDate(userData.user.createdAt) || "null"
+      Joined: formatDate(userData.user.createdAt) || "null",
     };
   }
 

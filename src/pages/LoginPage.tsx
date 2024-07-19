@@ -61,9 +61,10 @@ const LoginPage = () => {
 
             if (err.status !== 500){
                 toast.error(err.data?.message)
+            }else{
+                navigate('/error', {state: {from: location, errorMsg: ['Ensure Internet connection', 'Go back and try again']}})
             }
             
-            navigate('/error', {state: {from: location, errorMsg: ['Ensure Internet connection', 'Go back and try again']}})
             // console.log(err.data.message)
             // console.log(err.data.statusCode)
             // console.log(err.data.error)

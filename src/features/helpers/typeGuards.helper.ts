@@ -21,6 +21,12 @@ export type UpdateProfileFormDataType = {
     }
 };
 
+export type PasswordFormDataType = {
+    userId: string;
+    newPassword: string;
+    confirmPassword: string;
+  };
+
 // export type FormDataType = Partial<IAdmin> & Partial<ITeacher> & Partial<IStudent>;
 
 class CheckUserRole {

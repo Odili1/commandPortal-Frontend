@@ -21,8 +21,6 @@ import Spinner from "../../../components/Spinner"
 // }
 
 const AdminProfile = () => {
-    // const [adminData, setAdminData] = useState<adminResponseType | null>(null)
-    // const userId = useAppSelector(selectUserId) || ''
     const adminData = useAppSelector(selectAdminData)
     const isLoading = useRef(true)
     
