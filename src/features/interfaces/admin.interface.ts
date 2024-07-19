@@ -6,10 +6,10 @@ export interface IAdmin{
     lastName: string,
     user: {
         avatar?: string,
-        email?: string,
-        phoneNumber?: string,
-        lastLogin: Date,
-        updatedAt: Date,
-        createdAt: Date
+        email: string,
+        phoneNumber: string,
+        lastLogin: string | Date,
+        updatedAt: string | Date,
+        createdAt: string | Date
     }
 }

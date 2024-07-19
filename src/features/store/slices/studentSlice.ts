@@ -18,7 +18,7 @@ const studentSlice = createSlice({
         setStudentData: (state, action: PayloadAction<IStudent>) => {
             console.log(`setAdmin: ${JSON.stringify(action.payload)}`);
             
-            state.studentData = action.payload
+            state.studentData = {...state.studentData, ...action.payload}
         }
     }
 })

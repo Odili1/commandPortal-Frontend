@@ -4,7 +4,7 @@ import {
   userDataType,
 } from "../../features/helpers/typeGuard.helper";
 
-const UserDetails = ({ userData }: { userData: userDataType | null }) => {
+const UserDetails = ({ userData }: { userData: userDataType | null}) => {
   if (!userData) {
     console.log(`UserDetailsComponent: NO USER`);
 
@@ -13,6 +13,9 @@ const UserDetails = ({ userData }: { userData: userDataType | null }) => {
 
   console.log(
     `UserDetailsComponent: ${JSON.stringify(formatDate(userData.user.lastLogin))}`
+  );
+  console.log(
+    `UserDetailsComponent: ${typeof userData.user.lastLogin}`
   );
 
   let user = {};
@@ -51,7 +54,7 @@ const UserDetails = ({ userData }: { userData: userDataType | null }) => {
       "Middle Name:": userData.middleName || 'null',
       "Last Name:": userData.lastName,
       "Age:": userData.age?.toString() || "null",
-      Gender: userData.gender || "null",
+      'Gender': userData.gender || "null",
       "Date of Birth:": userData.dateOfBirth || "null",
       "State of Origin:": userData.stateOfOrigin || "null",
       "Address:": userData.address || "null",

@@ -4,6 +4,7 @@ export interface ITeacher{
     avatar?: string
     firstName: string,
     lastName: string,
+    gender: string,
     formClass?: string,
     user: {
         avatar?: string,

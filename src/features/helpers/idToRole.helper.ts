@@ -1,13 +1,14 @@
 
+export const idPrefix = (userId: string) => userId && userId.slice(0,2).toLowerCase()
 
 export const idToRole = (userId: string) => {
-    const idPrefix = userId.slice(0, 2)
+    const prefix = idPrefix(userId)
 
-    if (idPrefix === 'Ad'){
+    if (prefix === 'ad'){
         return 'admin'
-    }else if (idPrefix === 'St'){
+    }else if (prefix === 'st'){
         return 'student'
-    }else if (idPrefix === 'Th'){
+    }else if (prefix === 'th'){
         return 'teacher'
     }else{
         return null

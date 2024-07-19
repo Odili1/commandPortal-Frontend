@@ -1,14 +1,14 @@
 
 
 
-export const formatDate = (date: Date | null) => {
+export const formatDate = (date: Date | string | null) => {
     if (!date) return 'null';
-    date = new Date(date)
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-    const hour = String(date.getHours()).padStart(2, '0')
-    const min = String(date.getMinutes()).padStart(2, '0')
+    const newDateFormat = new Date(date)
+    const day = String(newDateFormat.getDate()).padStart(2, '0');
+    const month = String(newDateFormat.getMonth() + 1).padStart(2, '0');
+    const year = newDateFormat.getFullYear();
+    const hour = String(newDateFormat.getHours()).padStart(2, '0')
+    const min = String(newDateFormat.getMinutes()).padStart(2, '0')
     return `${day}-${month}-${year} ${hour}:${min}`;
 };
 

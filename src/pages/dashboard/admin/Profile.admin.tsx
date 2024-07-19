@@ -1,6 +1,8 @@
 import { useAppSelector } from "../../../features/store/hooks"
 import UserProfileDetails from '../../../components/dashboard/UserProfileDetails'
 import { selectAdminData } from '../../../features/store/slices/adminSlice'
+import { useRef } from "react"
+import Spinner from "../../../components/Spinner"
 
 
 // type adminResponseType ={
@@ -22,15 +24,19 @@ const AdminProfile = () => {
     // const [adminData, setAdminData] = useState<adminResponseType | null>(null)
     // const userId = useAppSelector(selectUserId) || ''
     const adminData = useAppSelector(selectAdminData)
+    const isLoading = useRef(true)
     
     console.log(`Avatar: ${adminData?.user?.avatar}`);
-    
+    console.log(`isLoading: ${isLoading.current}`);
+    if (adminData){
+        isLoading.current = false
+    }
 
     return (
         <div className="container bg- slate-200 min -h-[100vh] w-[90%] md:w-[85%] mx-auto">
+            {isLoading.current ? <Spinner loading={isLoading.current}/> : <UserProfileDetails userData={adminData}/>}
             <>
                 {/* Details */}
-                <UserProfileDetails userData={adminData}/>
                 {/* <div className='text-xl'>
                         <p className='text-xl mb-3'>:( </p>
                         <p>Error Occured:</p>

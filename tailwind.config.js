@@ -16,10 +16,35 @@ export default {
         bubble: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(30px)' },
+        },
+        showModal: {
+          '0%': {transform: 'scale(0)'},
+          '100%': {transform: 'scale(1)'}
+        },
+        hideModal : {
+          '0%': {transform: 'scale(0)'},
+          '100%': {transform: 'scale(1)'}
+        },
+        showSideBarModal: {
+          '0%': {transform: 'translateX(-100%)'},
+          '100%': {transform: 'translateX(0%)'}
+        },
+        hideSideBarModal: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        showOptionModal: {
+          '0%': {transform: 'translateY(-15%)'},
+          '100%': {transform: 'translateY(0%)'}
         }
       },
       animation: {
-        bubble: 'bubble 2s ease-in-out infinite'
+        bubble: 'bubble 2s ease-in-out infinite',
+        showModal: 'showModal 0.2s ease-in-out',
+        hideModal: 'hideModal 0.2s ease-in-out forwards',
+        showSideBarModal: 'showSideBarModal 0.2s ease-out',
+        hideSideBarModal: 'hideSideBarModal 0.2s ease-in-out forwards',
+        showOptionModal: 'showOptionModal 0.3s ease-in-out'
       },
       colors: {
         darkTrans: 'rgb(0, 0, 0, 0.4)',

@@ -6,13 +6,16 @@ import { logoutUser } from "../features/store/slices/authSlice"
 import { IError } from "../features/interfaces/userInfo"
 
 
-type useLogOutReturnType = () => Promise<void>
+type useLogOutReturnType = {
+    logOut: () => Promise<void>
+    isLoading: boolean
+}
 
 const useLogOut = (): useLogOutReturnType => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
 
-    const [logout] = useLogoutMutation()
+    const [logout, {isLoading}] = useLogoutMutation()
 
     const logOut = async(): Promise<void> => {
         try {
@@ -30,7 +33,7 @@ const useLogOut = (): useLogOutReturnType => {
         }
     }
 
-    return logOut
+    return {logOut, isLoading}
 }
 
 export default useLogOut

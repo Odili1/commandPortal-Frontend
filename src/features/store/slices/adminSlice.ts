@@ -18,7 +18,7 @@ const adminSlice = createSlice({
         setAdminData: (state, action: PayloadAction<IAdmin>) => {
             console.log(`setAdmin: ${JSON.stringify(action.payload)}`);
             
-            state.adminData = action.payload
+            state.adminData = {...state.adminData, ...action.payload}
         }
     }
 })

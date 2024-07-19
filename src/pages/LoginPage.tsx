@@ -59,11 +59,11 @@ const LoginPage = () => {
             console.log(isLoading);
             const err = error as IError
 
-            if (err.status === 500){
-                navigate('/error', {state: {from: location, errorMsg: ['Ensure Internet connection', 'Go back and try again']}})
+            if (err.status !== 500){
+                toast.error(err.data?.message)
             }
-
-            toast.error(err.data?.message)
+            
+            navigate('/error', {state: {from: location, errorMsg: ['Ensure Internet connection', 'Go back and try again']}})
             // console.log(err.data.message)
             // console.log(err.data.statusCode)
             // console.log(err.data.error)
@@ -114,7 +114,7 @@ const LoginPage = () => {
                     <div className='flex justify-between items-center'>
                         <p>New Student? <span><a href="" className='hover:text-indigo-600'>Verify Account</a></span></p>
 
-                        <button type='submit' disabled={isLoading} className={isLoading ? 'flex bg-blue- 700 w-20 py-3 rounded-lg text-white text-center font-bold transition-colors ease-in-out delay-75 duration-300 bg-black hover:text-white' : 'flex bg-blue-700 w-20 py-3 rounded-lg text-white text-center font-bold transition-colors ease-in-out delay-75 duration-300 hover:bg-black hover:text-white'}>
+                        <button type='submit' disabled={isLoading} className={isLoading ? 'flex bg-blue- 700 w-20 py-3 rounded-lg text-white text-center font-bold transition-colors ease-in-out delay-75 duration-300 bg-black hover:text-white cursor-not-allowed' : 'flex bg-blue-700 w-20 py-3 rounded-lg text-white text-center font-bold transition-colors ease-in-out delay-75 duration-300 hover:bg-black hover:text-white'}>
                             {isLoading 
                             ? <span className='mx-auto'>
                                 <svg className="animate-spin -ml-1 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

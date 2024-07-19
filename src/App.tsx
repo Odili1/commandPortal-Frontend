@@ -9,16 +9,16 @@ import NotFoundPage from "./pages/NotFoundPage"
 import RequireAuth from "./components/RequireAuth"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
-import StudentDashboard from "./pages/dashboard/student/StudentDashboard"
+import StudentDashboard from "./pages/dashboard/student/Dashboard.student"
 import DashboardLayout from "./layouts/DashboardLayout"
 import Subjects from "./pages/dashboard/student/Subjects"
 import Results from "./pages/dashboard/student/Results"
-import StudentAnalysis from "./pages/dashboard/student/StudentAnalysis"
+import StudentAnalysis from "./pages/dashboard/student/Analysis.student"
 import AdminDashboard from "./pages/dashboard/admin/Dashboard.admin"
 import AdminAnalysis from "./pages/dashboard/admin/Analysis.admin"
 import AdminProfile from "./pages/dashboard/admin/Profile.admin"
 import ErrorPage from "./pages/ErrorPage"
-import StudentProfile from "./pages/dashboard/student/Profile"
+import StudentProfile from "./pages/dashboard/student/Profile.student"
 
 
 // type Data = {
