@@ -27,7 +27,7 @@ const AdminProfile = () => {
     const isLoading = useRef(true)
     
     console.log(`Avatar: ${adminData?.user?.avatar}`);
-    console.log(`isLoading: ${isLoading.current}`);
+    // console.log(`isLoading: ${loading}`);
     if (adminData){
         isLoading.current = false
     }

@@ -1,7 +1,6 @@
 export interface IAdmin{
     id: number,
     userId: string,
-    avatar: string,
     firstName: string,
     lastName: string,
     user: {

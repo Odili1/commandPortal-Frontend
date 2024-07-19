@@ -17,6 +17,9 @@ const UserDetails = ({ userData }: { userData: userDataType | null}) => {
   console.log(
     `UserDetailsComponent: ${typeof userData.user.lastLogin}`
   );
+  console.log(
+    `UserDetailsComponent: ${JSON.stringify(userData.user)}`
+  );
 
   let user = {};
 

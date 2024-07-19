@@ -5,19 +5,21 @@ import { FaEllipsis, FaUser } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import ProfileOptionsModal from "../modals/ProfileOptionsModal";
 import EditProfileModal from "../modals/EditProfileModal";
+import ChangePasswordModal from "../modals/ChangePasswordModal";
 // import Spinner from "../Spinner";
 
 const UserProfileDetails = ({
   userData,
 }: {
-  userData: userDataType;
+  userData: userDataType,
 }) => {
-  const [openOptions, setOpenOptions] = useState<boolean>(false);
-  const [openEditProfile, setOpenEditProfile] = useState<boolean>(false);
+  const [openOptionsModal, setOpenOptionsModal] = useState<boolean>(false);
+  const [openEditProfileModal, setOpenEditProfileModal] = useState<boolean>(false);
+  const [openChangePasswordModal, setOpenChangePasswordModal] = useState<boolean>(false);
   const optionRef = useRef<HTMLDivElement>(null);
 
-  console.log(`openEditProfile: ${openEditProfile}`);
-  console.log(`openOptions: ${openOptions}`);
+  console.log(`openEditProfileModal: ${openEditProfileModal}`);
+  console.log(`openOptionsModal: ${openOptionsModal}`);
   
   // let loading: boolean
 
@@ -28,25 +30,28 @@ const UserProfileDetails = ({
         optionRef.current &&
         !optionRef.current.contains(event.target as Node)
       ) {
-        setOpenOptions((prev) => !prev);
+        setOpenOptionsModal((prev) => !prev);
       }
     };
 
-    if (openOptions) {
+    if (openOptionsModal) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [openOptions]);
+  }, [openOptionsModal]);
 
   const handleOptionsButton = () => {
-    setOpenOptions((prev) => !prev);
+    setOpenOptionsModal((prev) => !prev);
   };
 
   return (
     <div className="w-[100%] py-14 md:px-16 bg-white rounded-md">
       {/* Edit Profile Modal */}
-      {openEditProfile && <EditProfileModal userData={userData} openEditProfile={openEditProfile} setOpenEditProfile={setOpenEditProfile}/>}
+      {openEditProfileModal && <EditProfileModal userData={userData} openEditProfileModal={openEditProfileModal} setOpenEditProfileModal={setOpenEditProfileModal}/>}
+
+      {/* Change Password Modal */}
+      {openChangePasswordModal && <ChangePasswordModal userData={userData} setOpenChangePasswordModal={setOpenChangePasswordModal} openChangePasswordModal={openChangePasswordModal}/>}
 
       {/* Profile */}
       {
@@ -73,7 +78,7 @@ const UserProfileDetails = ({
               >
                 <FaEllipsis fontSize={"30px"} />
               </button>
-              <ProfileOptionsModal setOpenEditProfile={setOpenEditProfile} openOptions={openOptions} setOpenOptions={setOpenOptions}/>
+              <ProfileOptionsModal setOpenEditProfileModal={setOpenEditProfileModal} openOptionsModal={openOptionsModal} setOpenOptionsModal={setOpenOptionsModal} setOpenChangePasswordModal={setOpenChangePasswordModal}/>
             </div>
           </div>
 

@@ -5,18 +5,20 @@ import { idToRole } from "./idToRole.helper"
 
 export type userDataType = IAdmin | IStudent | ITeacher | null
 
-export type FormDataType = {
+export type UpdateProfileFormDataType = {
     userId: string;
     firstName: string;
     middleName?: string | '';
     lastName: string;
     gender?: string | '';
-    email?: string | '';
-    phoneNumber?: string | '';
     formClass?: string | '';
     dateOfBirth?: string | '';
     address?: string | '';
     stateOfOrigin?: string | '';
+    user: {
+        email?: string | '';
+        phoneNumber?: string | '';
+    }
 };
 
 // export type FormDataType = Partial<IAdmin> & Partial<ITeacher> & Partial<IStudent>;

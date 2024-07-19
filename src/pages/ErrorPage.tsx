@@ -1,5 +1,5 @@
 import { FaExclamationTriangle } from "react-icons/fa"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import useLogOut from "../hooks/useLogout"
 import Spinner from "../components/Spinner"
 
