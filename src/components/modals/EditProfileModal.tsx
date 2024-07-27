@@ -27,45 +27,59 @@ const EditProfileModal = ({
 
   // UseState Object for Form Inputs
   const [formData, setFormData] = useState<Partial<UpdateProfileFormDataType>>(
-    {}
+    {
+      userId: "",
+      firstName: "",
+      lastName: "",
+      gender: "",
+      formClass: "",
+      middleName: "",
+      dateOfBirth: "",
+      address: "",
+      stateOfOrigin: "",
+      user: {
+        email: "",
+        phoneNumber: "",
+      },
+    }
   );
   useEffect(() => {
     // if (userData){
     if (CheckRole.isAdmin(userData)) {
       setFormData({
-        userId: userData.userId,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
+        userId: userData.userId || '',
+        firstName: userData.firstName || '',
+        lastName: userData.lastName || '',
         user: {
-          email: userData.user.email,
-          phoneNumber: userData.user.phoneNumber,
+          email: userData.user.email || '',
+          phoneNumber: userData.user.phoneNumber || '',
         },
       });
     } else if (CheckRole.isStudent(userData)) {
       setFormData({
-        userId: userData.userId,
-        firstName: userData.firstName,
-        middleName: userData.middleName,
-        lastName: userData.lastName,
-        gender: userData.gender,
-        dateOfBirth: userData.dateOfBirth,
-        address: userData.address,
-        stateOfOrigin: userData.stateOfOrigin,
+        userId: userData.userId || '',
+        firstName: userData.firstName || '',
+        middleName: userData.middleName || '',
+        lastName: userData.lastName || '',
+        gender: userData.gender || '',
+        dateOfBirth: userData.dateOfBirth || '',
+        address: userData.address || '',
+        stateOfOrigin: userData.stateOfOrigin || '',
         user: {
-          email: userData.user.email,
-          phoneNumber: userData.user.phoneNumber,
+          email: userData.user.email || '',
+          phoneNumber: userData.user.phoneNumber || '',
         },
       });
     } else if (CheckRole.isTeacher(userData)) {
       setFormData({
-        userId: userData.userId,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        gender: userData.gender,
-        formClass: userData.formClass,
+        userId: userData.userId || '',
+        firstName: userData.firstName || '',
+        lastName: userData.lastName || '',
+        gender: userData.gender || '',
+        formClass: userData.formClass || '',
         user: {
-          email: userData.user.email,
-          phoneNumber: userData.user.phoneNumber,
+          email: userData.user.email || '',
+          phoneNumber: userData.user.phoneNumber || '',
         },
       });
     } else {
@@ -155,6 +169,7 @@ const EditProfileModal = ({
   }, [navigate, submitForm, setOpenEditProfileModal, location]);
 
   console.log(`Edit Profile isLoading: ${isLoading}`);
+  console.log(`Edit Profile data: ${JSON.stringify(formData)}`);
 
   return (
     <>
@@ -168,12 +183,12 @@ const EditProfileModal = ({
               ref={modalRef}
             >
               <div>
-                <h2 className="mb-5 ml-4 font-bold text-xl md:text-2xl">
+                <h2 className="mb-5 ml-4 font-bold text-2xl md:text-2xl">
                   Edit Profile
                 </h2>
                 <FaX
                   fontSize={"22px"}
-                  className="absolute right-[8%] top-[5%] cursor-pointer"
+                  className="absolute right-[9%] top-[6%] cursor-pointer"
                   onClick={() => setOpenEditProfileModal(false)}
                 />
               </div>
@@ -207,7 +222,7 @@ const EditProfileModal = ({
                     <label htmlFor="middleName">Middle Name:</label>
                     <input
                       type="text"
-                      value={formData.middleName || ""}
+                      value={formData.middleName}
                       className="py-2 px-3 border text-xl bg-white text-gray-500 rounded-lg"
                       onChange={(e) =>
                         setFormData({ ...formData, middleName: e.target.value })

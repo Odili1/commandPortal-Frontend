@@ -20,7 +20,7 @@ const Header = () => {
 
           <div className='md:ml-auto'>
             <div className='flex items-center'>
-              {!user && <Link to={'/login'} className='px-2 py-1 text-lg rounded md:px-4 md:py-2 text-white bg-standardBlue border-none hover:bg-lightBlue'>Login</Link>}
+              {!user && <Link to={'/login'} className='px-2 py-1 text-lg rounded-lg md:px-4 md:py-2 text-white bg-standardBlue border-none hover:bg-lightBlue'>Login</Link>}
             </div>
             {/* Testing Logout */}
             {/* {user && <button onClick={handleLogout} className='px-2 py-1 text-lg rounded md:px-4 md:py-2 text-white bg-red-700 border-none hover:bg-red-600'>Logout</button>} */}

@@ -2,8 +2,13 @@ import { Navigate, Outlet, useLocation } from "react-router-dom"
 import { useAppSelector } from "../features/store/hooks"
 // import { toast } from "react-toastify"
 import { selectUserId } from "../features/store/slices/authSlice"
+import { idToRole } from "../features/helpers/idToRole.helper"
 
-const RequireAuth = () => {
+type RequireAuthPropType = {
+  allowedRoles: string[]
+}
+
+const RequireAuth = ({allowedRoles}: RequireAuthPropType) => {
     const location = useLocation()
 
     const userId = useAppSelector(selectUserId)
@@ -14,10 +19,17 @@ const RequireAuth = () => {
       // toast.error('Login to continue RA')
     }
 
+    const userRole = idToRole(userId || '') || ''
+
+    const allowAccess = allowedRoles.includes(userRole)
+
   return (
-    userId
-      ? <Outlet/>
+    allowAccess
+    ? <Outlet/>
+    : userId
+      ? <Navigate to={'/unauthorized'} state={{from: location}} replace/>
       : <Navigate to={'/login'} state={{from: location}} replace/>
+
   )
 }
 

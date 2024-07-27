@@ -23,8 +23,11 @@ const baseQueryWithReauth = async(
     args: string | FetchArgs, 
     api: BaseQueryApi, 
     extraOptions: object) => {
+        console.log(`Making API Request: ${args}`);
+        console.log(`API URl: ${JSON.stringify(api)}`);
+        
     const result = await baseQuery(args, api, extraOptions)
-        // console.log(`baseQueryWithReauth: ${api}`);
+    console.log(`API Response: ${JSON.stringify(result)}`);
         
 
     if (result.error && (result.error as FetchBaseQueryError).status === 401){

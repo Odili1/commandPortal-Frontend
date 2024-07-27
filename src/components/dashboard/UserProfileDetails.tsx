@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import ProfileOptionsModal from "../modals/ProfileOptionsModal";
 import EditProfileModal from "../modals/EditProfileModal";
 import ChangePasswordModal from "../modals/ChangePasswordModal";
+import { useAppSelector } from "../../features/store/hooks";
+import { selectUserId } from "../../features/store/slices/authSlice";
 // import Spinner from "../Spinner";
 
 const UserProfileDetails = ({ userData }: { userData: userDataType }) => {
@@ -20,7 +22,8 @@ const UserProfileDetails = ({ userData }: { userData: userDataType }) => {
   console.log(`openOptionsModal: ${openOptionsModal}`);
 
   // Get User Role
-  const role = idToRole(userData ? userData?.userId : '')
+  const loggedInUserId = useAppSelector(selectUserId)
+  const role = idToRole(loggedInUserId || '')
 
   useEffect(() => {
     // loading = true
@@ -45,7 +48,7 @@ const UserProfileDetails = ({ userData }: { userData: userDataType }) => {
   };
 
   return (
-    <div className="w-[100%] py-14 md:px-16 bg-white rounded-md">
+    <div className="w-[100%] py-14 md:px-16 bg-white rounded-md md:mt-14">
       {/* Edit Profile Modal */}
       {openEditProfileModal && (
         <EditProfileModal

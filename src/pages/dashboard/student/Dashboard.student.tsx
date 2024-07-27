@@ -1,14 +1,12 @@
-
+import MainTitleHeader from "../../../components/dashboard/titleHeaders/MainTitleHeader";
 
 const StudentDashboard = () => {
   return (
     <>
-    <h2 className="">hi</h2>
-      {/* <div className="mt-40">
-        <h2 className=" text-end">hi</h2>
-      </div> */}
+      {/* Title Header */}
+      <MainTitleHeader pageName="Dashboard" />
     </>
-  )
-}
+  );
+};
 
-export default StudentDashboard
+export default StudentDashboard;

@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import Spinner from "../Spinner";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IError } from "../../features/interfaces/userInfo";
-import { useChangeUserPasswordMutation } from "../../features/store/api/authApiSlice";
+import { useChangeUserPasswordMutation } from "../../features/store/api/usersApiSlice";
 
 type ChangePasswordModalProp = {
   userData: userDataType;
@@ -120,16 +120,16 @@ const ChangePasswordModal = ({
         <Spinner loading={isLoading} />
       ) : (
         <div
-          className={`container relative mx-auto w-[95%] px-2 h-[80%] bg-backgroundColor rounded-md md:px-8 py-10 md:w-[50%] md:h-[90%] overflow-y-auto animate-showModal`}
+          className={`container relative mx-auto w-[95%] px-2 h-[60%] bg-backgroundColor rounded-md md:px-8 py-10 md:w-[50%] md:h-[80%] overflow-y-auto animate-showModal`}
           ref={modalRef}
         >
           <div>
-            <h2 className="mb-5 ml-4 font-bold text-xl md:text-2xl">
+            <h2 className="mb-5 ml-4 font-bold text-2xl md:text-2xl">
               Change Password
             </h2>
             <FaX
               fontSize={"22px"}
-              className="absolute right-[8%] top-[5%] cursor-pointer"
+              className="absolute right-[9%] top-[8%] cursor-pointer"
               onClick={() => setOpenChangePasswordModal((prev) => !prev)}
             />
           </div>

@@ -36,6 +36,10 @@ export default {
         showOptionModal: {
           '0%': {transform: 'translateY(-15%)'},
           '100%': {transform: 'translateY(0%)'}
+        },
+        showTableOptionModal: {
+          '0%': {transform: 'translateY(5%)'},
+          '100%': {transform: 'translateY(-13%)'}
         }
       },
       animation: {
@@ -44,7 +48,8 @@ export default {
         hideModal: 'hideModal 0.2s ease-in-out forwards',
         showSideBarModal: 'showSideBarModal 0.2s ease-out',
         hideSideBarModal: 'hideSideBarModal 0.2s ease-in-out forwards',
-        showOptionModal: 'showOptionModal 0.3s ease-in-out'
+        showOptionModal: 'showOptionModal 0.3s ease-in-out forwards',
+        showTableOptionModal: 'showTableOptionModal 0.3s ease-in-out forwards'
       },
       colors: {
         darkTrans: 'rgb(0, 0, 0, 0.4)',

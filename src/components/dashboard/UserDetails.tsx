@@ -11,13 +11,14 @@ const UserDetails = ({ userData }: { userData: userDataType | null }) => {
     return <div>No user data available.</div>;
   }
 
+  console.log(`UserDetailsComponent: ${typeof userData}`);
+  console.log(`UserDetailsComponent: ${JSON.stringify(userData)}`);
+
   console.log(
     `UserDetailsComponent: ${JSON.stringify(
       formatDate(userData.user.lastLogin)
     )}`
   );
-  console.log(`UserDetailsComponent: ${typeof userData.user.lastLogin}`);
-  console.log(`UserDetailsComponent: ${JSON.stringify(userData.user)}`);
 
   let user = {};
 

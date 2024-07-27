@@ -43,7 +43,7 @@ const LogOutModal = () => {
         <div className={`fixed h-[100%] w-full z-30 bg-black bg-opacity-50 flex justify-center items-center`}>
           <div className={`container mx-auto w-[95%] min-h-[30%] bg-backgroundColor rounded-md px-8 py-10 md:w-[50%] md:h-[40%] ${showModal ? 'animate-showModal' : 'animate-hideModal'}`} ref={modalRef}>
               <div>
-                  <h2 className="mb-5 ml-4 font-bold text-md">Log Out</h2>
+                  <h2 className="mb-5 ml-4 font-bold text-lg">Log Out</h2>
                   <div className="border-y-[1px] bg-slate-200"></div>
                   <h2 className="my-6 ml-4 text-center md:text-left text-fontGrayColor">Are you sure you want to log out of the portal?</h2>
                   <div className="border-y-[1px] bg-slate-200"></div>

@@ -14,3 +14,9 @@ export const idToRole = (userId: string) => {
         return null
     }
 }
+
+export const idToRoleTitleCase = (userId: string) => {
+    const role = idToRole(userId)
+
+    return `${role?.slice(0,1).toUpperCase()}${role?.slice(1)}`
+}

@@ -9,6 +9,7 @@ export interface IStudent{
     dateOfBirth?: string,
     address?: string,
     stateOfOrigin?: string,
+    category?: string,
     user: {
         avatar?: string,
         email?: string,

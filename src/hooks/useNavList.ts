@@ -14,7 +14,7 @@ export const useNavList = (): useNavListReturnType => {
         {to: 'ad/dashboard', name: 'Dashboard'},
         {to: 'ad/profile', name: 'Profile'},
         {to: 'ad/analysis', name: 'Analysis'},
-        {to: 'ad/analysis', name: 'Analysis'},
+        // {to: 'ad/analysis', name: 'Analysis'},
         // {to: 'ad/analysis', name: 'Analysis'},
         // {to: 'ad/analysis', name: 'Analysis'},
         // {to: 'ad/analysis', name: 'Analysis'},

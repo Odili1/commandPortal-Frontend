@@ -11,12 +11,22 @@ import {
 } from "../../features/store/slices/uiSlice";
 import { useLoadUser } from "../../hooks/useLoadUser";
 import { useEffect } from "react";
+import { selectUserId } from "../../features/store/slices/authSlice";
+import { idToRole } from "../../features/helpers/idToRole.helper";
+import { setAdminData } from "../../features/store/slices/adminSlice";
+import { IAdmin } from "../../features/interfaces/admin.interface";
+import { setStudentData } from "../../features/store/slices/studentSlice";
+import { IStudent } from "../../features/interfaces/student.interface";
 
 const DashboardHeader = () => {
   // Hooks
   const showMenuModal = useAppSelector(selectShowSideBarModal);
+  const userId = useAppSelector(selectUserId) || ''
+
   const dispatch = useAppDispatch();
-  const loadUser = useLoadUser();
+  const loadUser = useLoadUser(userId);
+
+  const role = idToRole(userId)
 
   const [userData, setUserData] = useState<{
     lastName?: string;
@@ -31,8 +41,18 @@ const DashboardHeader = () => {
       return;
     }
 
-    setUserData((prevState) => ({ ...prevState, ...response }));
-  }, [loadUser]);
+    const {lastName, user: {avatar}} = response
+
+    setUserData((prevState) => ({ ...prevState, lastName, avatar }));
+
+    if (role === 'admin'){
+      dispatch(setAdminData({...response} as IAdmin))
+    }
+    
+    if (role === 'student'){
+      dispatch(setStudentData({...response} as IStudent))
+    }
+  }, [loadUser, dispatch, role]);
 
   useEffect(() => {
     console.log(`DashBoard fetchUser`);

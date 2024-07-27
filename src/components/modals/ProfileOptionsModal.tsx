@@ -29,8 +29,8 @@ const ProfileOptionsModal = ({openOptionsModal, setOpenEditProfileModal, setOpen
     <div
       className={`absolute  md:gap-y-3 right-[7%] p-3 w-36 md:text-lg text-slate-200 font-semibold bg-black bg-opacity-90 rounded-lg shadow-2xl ${openOptionsModal ? 'flex flex-col animate-showOptionModal' : 'hidden animate-hideModal'}`}
     >
-      <button className="p-2 hover:bg-white text-left hover:text-gray-900 hover:rounded-md hover:font-semibold transition-all ease-in-out delay-75 duration-150 cursor-pointer" onClick={handleClickEditProfile}>Edit Profile</button>
-      <button className="p-2 hover:bg-white hover:text-gray-900 text-left hover:rounded-md hover:font-semibold transition-all ease-in-out delay-75 duration-150 cursor-pointer" onClick={handleClickChangePassword}>Change Password</button>
+      <button className="p-2 hover:bg-gray-500 text-left hover:text-gray-900 hover:rounded-md hover:font-semibold transition-all ease-in-out delay-75 duration-150 cursor-pointer" onClick={handleClickEditProfile}>Edit Profile</button>
+      <button className="p-2 hover:bg-gray-500 hover:text-gray-900 text-left hover:rounded-md hover:font-semibold transition-all ease-in-out delay-75 duration-150 cursor-pointer" onClick={handleClickChangePassword}>Change Password</button>
       {/* {options.map((option, i) => (
         <Link
           to={option.to}

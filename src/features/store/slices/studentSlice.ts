@@ -16,7 +16,7 @@ const studentSlice = createSlice({
     initialState,
     reducers: {
         setStudentData: (state, action: PayloadAction<IStudent>) => {
-            console.log(`setAdmin: ${JSON.stringify(action.payload)}`);
+            console.log(`setStudent: ${JSON.stringify(action.payload)}`);
             
             state.studentData = {...state.studentData, ...action.payload}
         }
