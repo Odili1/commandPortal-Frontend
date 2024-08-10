@@ -5,11 +5,11 @@ export interface IStudent{
     middleName?: string,
     lastName: string,
     age?: string,
-    gender?: string,
+    gender?: "male" | 'female',
     dateOfBirth?: string,
     address?: string,
     stateOfOrigin?: string,
-    category?: string,
+    category?: "officer" | "soldier" | "staff" | "civilian",
     user: {
         avatar?: string,
         email?: string,

@@ -4,9 +4,10 @@ import { useUpdateAdminMutation } from "../features/store/api/adminAPiSlice";
 import { useAppDispatch, useAppSelector } from "../features/store/hooks";
 import { IError } from "../features/interfaces/userInfo";
 import { idToRole } from "../features/helpers/idToRole.helper";
-import { setAdminData } from "../features/store/slices/adminSlice";
+// import { setAdminData } from "../features/store/slices/adminSlice";
 import { useUpdateStudentMutation } from "../features/store/api/studentApiSlice";
 import { selectUserId } from "../features/store/slices/authSlice";
+import { setLoggedInUserData } from "../features/store/slices/userSlice";
 
 const useSubmitForm = (userFormData: UpdateProfileFormDataType | PasswordFormDataType) => {
   console.log(`useSubmitForm => UserFormData ${JSON.stringify(userFormData)}`);
@@ -34,7 +35,8 @@ const useSubmitForm = (userFormData: UpdateProfileFormDataType | PasswordFormDat
           
           console.log(`Admin Update Response: ${JSON.stringify(response)}`);
 
-          userFormData.userId === loggedInUserId &&  dispatch(setAdminData({ ...response }));
+          // userFormData.userId === loggedInUserId &&  dispatch(setAdminData({ ...response }));
+          userFormData.userId === loggedInUserId &&  dispatch(setLoggedInUserData({ ...response }));
         }else if (idToRole(userFormData.userId) === "student") {
           console.log(`Student Update Response Block`);
 

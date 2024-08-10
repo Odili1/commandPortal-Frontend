@@ -35,11 +35,11 @@ export default {
         },
         showOptionModal: {
           '0%': {transform: 'translateY(-15%)'},
-          '100%': {transform: 'translateY(0%)'}
+          '100%': {transform: 'translateY(-5%)'}
         },
         showTableOptionModal: {
-          '0%': {transform: 'translateY(5%)'},
-          '100%': {transform: 'translateY(-13%)'}
+          '0%': {transform: 'translateY(0%)'},
+          '100%': {transform: 'translateY(13%)'}
         }
       },
       animation: {

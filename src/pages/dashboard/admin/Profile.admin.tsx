@@ -1,9 +1,9 @@
 import { useAppSelector } from "../../../features/store/hooks";
 import UserProfileDetails from "../../../components/dashboard/UserProfileDetails";
-import { selectAdminData } from "../../../features/store/slices/adminSlice";
 import { useRef } from "react";
 import Spinner from "../../../components/Spinner";
 import MainTitleHeader from "../../../components/dashboard/titleHeaders/MainTitleHeader";
+import { selectloggedInUserData } from "../../../features/store/slices/userSlice";
 
 // type adminResponseType ={
 //     id: number,
@@ -21,7 +21,7 @@ import MainTitleHeader from "../../../components/dashboard/titleHeaders/MainTitl
 // }
 
 const AdminProfile = () => {
-  const adminData = useAppSelector(selectAdminData);
+  const adminData = useAppSelector(selectloggedInUserData);
   const isLoading = useRef(true);
 
   console.log(`Avatar: ${adminData?.user?.avatar}`);

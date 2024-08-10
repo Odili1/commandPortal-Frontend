@@ -8,6 +8,7 @@ import EditProfileModal from "../modals/EditProfileModal";
 import ChangePasswordModal from "../modals/ChangePasswordModal";
 import { useAppSelector } from "../../features/store/hooks";
 import { selectUserId } from "../../features/store/slices/authSlice";
+import DeleteUserModal from "../modals/DeleteUserModal";
 // import Spinner from "../Spinner";
 
 const UserProfileDetails = ({ userData }: { userData: userDataType }) => {
@@ -16,8 +17,10 @@ const UserProfileDetails = ({ userData }: { userData: userDataType }) => {
     useState<boolean>(false);
   const [openChangePasswordModal, setOpenChangePasswordModal] =
     useState<boolean>(false);
+  const [openDeleteUserModal, setOpenDeleteUserModal] = useState<boolean>(false)
   const optionRef = useRef<HTMLDivElement>(null);
 
+  console.log(`user Profile datails comp User data ${userData}`)
   console.log(`openEditProfileModal: ${openEditProfileModal}`);
   console.log(`openOptionsModal: ${openOptionsModal}`);
 
@@ -48,7 +51,7 @@ const UserProfileDetails = ({ userData }: { userData: userDataType }) => {
   };
 
   return (
-    <div className="w-[100%] py-14 md:px-16 bg-white rounded-md md:mt-14">
+    <div className="w-[100%] py-14 md:px-16 bg-white rounded-lg md:mt-14">
       {/* Edit Profile Modal */}
       {openEditProfileModal && (
         <EditProfileModal
@@ -66,6 +69,17 @@ const UserProfileDetails = ({ userData }: { userData: userDataType }) => {
           openChangePasswordModal={openChangePasswordModal}
         />
       )}
+
+      {/* Delete User Modal */}
+      {
+        openDeleteUserModal && (
+          <DeleteUserModal 
+            userData={userData} 
+            setOpenDeleteUserModal={setOpenDeleteUserModal}
+            openDeleteUserModal={openDeleteUserModal}
+          />
+        )
+      }
 
       {/* Profile */}
       {
@@ -100,6 +114,7 @@ const UserProfileDetails = ({ userData }: { userData: userDataType }) => {
                   openOptionsModal={openOptionsModal}
                   setOpenOptionsModal={setOpenOptionsModal}
                   setOpenChangePasswordModal={setOpenChangePasswordModal}
+                  setOpenDeleteUserModal={setOpenDeleteUserModal}
                 />
               </div>
             </div>

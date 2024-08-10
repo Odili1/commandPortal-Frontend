@@ -108,7 +108,9 @@ const LoginPage = () => {
                         value={password}
                         />
                     </div>
-                    <a href="" className='block text-right hover:text-indigo-600 mb-4'>Forgot Password?</a>
+                    <div className='text-right mb-4'>
+                        <a href="" className='hover:text-indigo-600'>Forgot Password?</a>
+                    </div>
 
                     <hr className='mb-4'/>
 

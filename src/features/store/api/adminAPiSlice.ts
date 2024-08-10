@@ -2,12 +2,30 @@ import { PasswordFormDataType, UpdateProfileFormDataType } from "../../helpers/t
 import { IAdmin } from "../../interfaces/admin.interface";
 import { apiSlice } from "./apiSlice";
 
-
+type NewAdminType = {
+    firstName: string,
+    lastName: string,
+    user: {
+        email: string,
+        phoneNumber: string,
+        password: string,
+        confirmPassword?: string
+    }
+}
 
 
 
 const adminApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
+        createAdmin: builder.mutation<IAdmin, NewAdminType>({
+            query: (credentials) => ({
+                url: `/admin/new-admin`,
+                method: 'POST',
+                body: {
+                    ...credentials
+                }
+            }) 
+        }),
         getAdminById: builder.mutation({
             query: (id) =>  `/admin/${id}`
         }),
@@ -30,7 +48,8 @@ const adminApiSlice = apiSlice.injectEndpoints({
 export const {
     useGetAdminByIdMutation,
     useUpdateAdminMutation,
-    useGetAllAdminQuery
+    useGetAllAdminQuery,
+    useCreateAdminMutation
 } = adminApiSlice
 
 export default adminApiSlice

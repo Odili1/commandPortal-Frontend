@@ -23,6 +23,12 @@ const usersApiSlice = apiSlice.injectEndpoints({
             query: () => ({
                 url: `/user/all`
             })
+        }),
+        deleteUser: builder.mutation<void, {id: string}>({
+            query: ({id}) => ({
+                url: `/user/delete/${id}`,
+                method: 'DELETE'
+            })
         })
     })
 })
@@ -30,7 +36,8 @@ const usersApiSlice = apiSlice.injectEndpoints({
 export const {
     useFetchUserMutation,
     useGetAllUsersQuery,
-    useChangeUserPasswordMutation
+    useChangeUserPasswordMutation,
+    useDeleteUserMutation
 } = usersApiSlice
 
 

@@ -16,6 +16,7 @@ export type UpdateProfileFormDataType = {
     dateOfBirth?: string | '';
     address?: string | '';
     stateOfOrigin?: string | '';
+    category?: string | '',
     user: {
         email?: string | '';
         phoneNumber?: string | '';
@@ -49,7 +50,7 @@ class CheckUserRole {
         if (!user){
             return false
         }
-        const role = idToRole(user.userId)
+        const role = idToRole(user.userId || '')
         return role === 'admin'
     }
 
@@ -57,7 +58,7 @@ class CheckUserRole {
         if (!user){
             return false
         }
-        const role = idToRole(user.userId)
+        const role = idToRole(user.userId || '')
         return role === 'teacher'
     }
 
@@ -65,7 +66,7 @@ class CheckUserRole {
         if (!user){
             return false
         }
-        const role = idToRole(user.userId)
+        const role = idToRole(user.userId || '')
         return role === 'student'
     }
 }

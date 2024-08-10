@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import UserProfileDetails from "../../../components/dashboard/UserProfileDetails";
 import { useAppSelector } from "../../../features/store/hooks";
-import { selectStudentData } from "../../../features/store/slices/studentSlice";
 import Spinner from "../../../components/Spinner";
 import MainTitleHeader from "../../../components/dashboard/titleHeaders/MainTitleHeader";
+import { selectloggedInUserData } from "../../../features/store/slices/userSlice";
 
 const StudentProfile = () => {
-  const studentData = useAppSelector(selectStudentData);
+  const studentData = useAppSelector(selectloggedInUserData);
   const isLoading = useRef(true);
 
   console.log(`Avatar: ${studentData?.user?.avatar}`);

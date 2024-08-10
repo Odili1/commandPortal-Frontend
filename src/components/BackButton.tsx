@@ -1,12 +1,15 @@
 import { FaCircleArrowLeft } from "react-icons/fa6"
 import { useNavigate } from "react-router-dom"
 
+type BackButtonPropType = {
+  locationTo?: string
+}
 
-const BackButton = () => {
+const BackButton = ({locationTo}: BackButtonPropType) => {
     const navigate = useNavigate()
 
     const handleCLick = () => {
-        navigate(-1)
+      locationTo ? navigate(locationTo) : navigate(-1)
     }
 
   return (

@@ -9,30 +9,30 @@ import Spinner from "../Spinner"
 
 
 const LogOutModal = () => {
-    const modalRef = useRef<HTMLDivElement>(null)
-    const dispatch = useAppDispatch()
-    
-    const {logOut, isLoading} = useLogOut()
-    const showModal = useAppSelector(selectShowLogoutModal)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const dispatch = useAppDispatch()
+  
+  const {logOut, isLoading} = useLogOut()
+  const showModal = useAppSelector(selectShowLogoutModal)
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-          if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-            dispatch(setShowLogoutModal())
-          }
+  useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+          dispatch(setShowLogoutModal())
         }
-        if (showModal){
-            document.addEventListener('mousedown', handleClickOutside)
-        }
+      }
+      if (showModal){
+          document.addEventListener('mousedown', handleClickOutside)
+      }
 
-        return () => document.removeEventListener('mousedown', handleClickOutside)
-    }, [dispatch, showModal])
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [dispatch, showModal])
 
 
-    const handleLogout = () => {
-        dispatch(setShowLogoutModal())
-        logOut()
-    }
+  const handleLogout = () => {
+      dispatch(setShowLogoutModal())
+      logOut()
+  }
 
 
 

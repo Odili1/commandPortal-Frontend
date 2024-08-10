@@ -1,4 +1,4 @@
-import { formatDate } from "../../features/helpers/date.helper";
+import { formatDate, formatDateWithTime } from "../../features/helpers/date.helper";
 import {
   CheckRole,
   userDataType,
@@ -25,46 +25,47 @@ const UserDetails = ({ userData }: { userData: userDataType | null }) => {
   if (CheckRole.isAdmin(userData)) {
     user = {
       "User ID:": userData.userId,
-      "First Name:": userData.firstName,
-      "Last Name:": userData.lastName,
+      "First Name:": userData.firstName || "null",
+      "Last Name:": userData.lastName || "null",
       "Email:": userData.user.email || "null",
       "Phone Number:": userData.user.phoneNumber || "null",
-      "Last Login": formatDate(userData.user.lastLogin) || "null",
-      "Last Update": formatDate(userData.user.updatedAt) || "null",
-      Joined: formatDate(userData.user.createdAt) || "null",
+      "Last Login": formatDateWithTime(userData.user.lastLogin) || "null",
+      "Last Update": formatDateWithTime(userData.user.updatedAt) || "null",
+      Joined: formatDateWithTime(userData.user.createdAt) || "null",
     };
   }
 
   if (CheckRole.isTeacher(userData)) {
     user = {
       "User ID:": userData.userId,
-      "First Name:": userData.firstName,
-      "Last Name:": userData.lastName,
+      "First Name:": userData.firstName || "null",
+      "Last Name:": userData.lastName || "null",
       "Form Class:": userData.formClass || "null",
       "Email:": userData.user.email || "null",
       "Phone Number:": userData.user.phoneNumber || "null",
-      "Last Login": formatDate(userData.user.lastLogin) || "null",
-      "Last Update": formatDate(userData.user.updatedAt) || "null",
-      Joined: formatDate(userData.user.createdAt) || "null",
+      "Last Login": formatDateWithTime(userData.user.lastLogin) || "null",
+      "Last Update": formatDateWithTime(userData.user.updatedAt) || "null",
+      Joined: formatDateWithTime(userData.user.createdAt) || "null",
     };
   }
 
   if (CheckRole.isStudent(userData)) {
     user = {
       "User ID:": userData.userId,
-      "First Name:": userData.firstName,
+      "First Name:": userData.firstName || "null",
       "Middle Name:": userData.middleName || "null",
-      "Last Name:": userData.lastName,
+      "Last Name:": userData.lastName || "null",
       "Age:": userData.age?.toString() || "null",
-      Gender: userData.gender || "null",
-      "Date of Birth:": userData.dateOfBirth || "null",
+      "Gender": userData.gender || "null",
+      "Date of Birth:": formatDate(userData.dateOfBirth || '') || "null",
       "State of Origin:": userData.stateOfOrigin || "null",
       "Address:": userData.address || "null",
+      "Category:": userData.category || "null",
       "Email:": userData.user.email || "null",
       "Phone Number:": userData.user.phoneNumber || "null",
-      "Last Login": formatDate(userData.user.lastLogin) || "null",
-      "Last Update": formatDate(userData.user.updatedAt) || "null",
-      Joined: formatDate(userData.user.createdAt) || "null",
+      "Last Login": formatDateWithTime(userData.user.lastLogin) || "null",
+      "Last Update": formatDateWithTime(userData.user.updatedAt) || "null",
+      "Joined": formatDateWithTime(userData.user.createdAt) || "null",
     };
   }
 

@@ -11,6 +11,7 @@ import Spinner from "../Spinner";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { IError } from "../../features/interfaces/userInfo";
+import { formatDateToHTML } from "../../features/helpers/date.helper";
 
 type EditProfileModalProp = {
   userData: userDataType;
@@ -37,6 +38,7 @@ const EditProfileModal = ({
       dateOfBirth: "",
       address: "",
       stateOfOrigin: "",
+      category: "",
       user: {
         email: "",
         phoneNumber: "",
@@ -62,9 +64,10 @@ const EditProfileModal = ({
         middleName: userData.middleName || '',
         lastName: userData.lastName || '',
         gender: userData.gender || '',
-        dateOfBirth: userData.dateOfBirth || '',
+        dateOfBirth: formatDateToHTML(userData.dateOfBirth || '') || '',
         address: userData.address || '',
         stateOfOrigin: userData.stateOfOrigin || '',
+        category: userData.category || '',
         user: {
           email: userData.user.email || '',
           phoneNumber: userData.user.phoneNumber || '',
@@ -93,6 +96,7 @@ const EditProfileModal = ({
         dateOfBirth: "",
         address: "",
         stateOfOrigin: "",
+        category: "",
         user: {
           email: "",
           phoneNumber: "",
@@ -138,6 +142,7 @@ const EditProfileModal = ({
       await submitForm();
 
       setOpenEditProfileModal(false);
+      setTimeout(() => window.location.reload(), 1500)
       toast.success("Profile Updated");
     } catch (error: unknown) {
       console.log(`Edit Profile Catch Error: ${JSON.stringify(error)}`);
@@ -240,7 +245,7 @@ const EditProfileModal = ({
                       }
                     />
                   </div>
-                  <div
+                  {/* <div
                     className={`${
                       role === "student" ? "flex" : "hidden"
                     } flex-col gap-y-2`}
@@ -252,28 +257,31 @@ const EditProfileModal = ({
                       className="py-2 px-3 border text-xl bg-white text-gray-500 rounded-lg"
                       disabled
                     />
+                  </div> */}
+                  <div
+                    className={`${
+                      role === "student" ? "flex" : "hidden"
+                    } flex-col gap-y-2`}
+                  >
+                    <label htmlFor="gender">Gender</label>
+                    <select 
+                      name="gender" 
+                      id="gender"
+                      value={formData.gender}
+                      className="py-2 px-3 border text-xl bg-white text-gray-500 rounded-lg" 
+                      onChange={(e) => setFormData({...formData, [`${e.target.name}`]: e.target.value})
+                    }>
+                      <option value="" disabled>Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
                   </div>
                   <div
                     className={`${
                       role === "student" ? "flex" : "hidden"
                     } flex-col gap-y-2`}
                   >
-                    <label htmlFor="lastName">Gender</label>
-                    <input
-                      type="text"
-                      value={formData.gender || ""}
-                      className="py-2 px-3 border text-xl bg-white text-gray-500 rounded-lg"
-                      onChange={(e) =>
-                        setFormData({ ...formData, gender: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div
-                    className={`${
-                      role === "student" ? "flex" : "hidden"
-                    } flex-col gap-y-2`}
-                  >
-                    <label htmlFor="lastName">Date of Birth</label>
+                    <label htmlFor="dob">Date of Birth</label>
                     <input
                       type="date"
                       value={formData.dateOfBirth || ""}
@@ -291,7 +299,7 @@ const EditProfileModal = ({
                       role === "student" ? "flex" : "hidden"
                     } flex-col gap-y-2`}
                   >
-                    <label htmlFor="lastName">State of Origin</label>
+                    <label htmlFor="soo">State of Origin</label>
                     <input
                       type="text"
                       value={formData.stateOfOrigin || ""}
@@ -309,7 +317,7 @@ const EditProfileModal = ({
                       role === "student" ? "flex" : "hidden"
                     } flex-col gap-y-2`}
                   >
-                    <label htmlFor="lastName">Address</label>
+                    <label htmlFor="address">Address</label>
                     <input
                       type="text"
                       value={formData.address || ""}
@@ -324,7 +332,7 @@ const EditProfileModal = ({
                       role === "student" ? "flex" : "hidden"
                     } flex-col gap-y-2`}
                   >
-                    <label htmlFor="lastName">Form Class</label>
+                    <label htmlFor="formClass">Form Class</label>
                     <input
                       type="text"
                       value={formData.formClass || ""}
@@ -364,6 +372,25 @@ const EditProfileModal = ({
                         })
                       }
                     />
+                  </div>
+                  <div
+                    className={`${
+                      role === "student" ? "flex" : "hidden"
+                    } flex-col gap-y-2`}
+                  >
+                    <label htmlFor="gender">Category</label>
+                    <select 
+                      name="category" 
+                      id="category"
+                      value={formData.category}
+                      className="py-2 px-3 border text-xl bg-white text-gray-500 rounded-lg" 
+                      onChange={(e) => setFormData({...formData, category: e.target.value})
+                    }>
+                      <option value="Officer">Officer</option>
+                      <option value="Soldier">Soldier</option>
+                      <option value="Staff">Staff</option>
+                      <option value="Civilian">Civilian</option>
+                    </select>
                   </div>
 
                   <div className="mt-8 flex justify-between">

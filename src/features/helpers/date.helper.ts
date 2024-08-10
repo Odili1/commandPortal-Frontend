@@ -1,7 +1,7 @@
 
 
 
-export const formatDate = (date: Date | string | null) => {
+export const formatDateWithTime = (date: Date | string | null) => {
     if (!date) return 'null';
     const newDateFormat = new Date(date)
     const day = String(newDateFormat.getDate()).padStart(2, '0');
@@ -12,4 +12,20 @@ export const formatDate = (date: Date | string | null) => {
     return `${day}-${month}-${year} ${hour}:${min}`;
 };
 
+export const formatDate = (date: Date | string | null) => {
+    if (!date) return 'null';
+    const newDateFormat = new Date(date)
+    const day = String(newDateFormat.getDate()).padStart(2, '0');
+    const month = String(newDateFormat.getMonth() + 1).padStart(2, '0');
+    const year = newDateFormat.getFullYear();
+    return `${day}-${month}-${year}`;
+};
 
+export const formatDateToHTML = (date: Date | string | null) => {
+    if (!date) return 'null';
+    const newDateFormat = new Date(date)
+    const day = String(newDateFormat.getDate()).padStart(2, '0');
+    const month = String(newDateFormat.getMonth() + 1).padStart(2, '0');
+    const year = newDateFormat.getFullYear();
+    return `${year}-${month}-${day}`;
+};

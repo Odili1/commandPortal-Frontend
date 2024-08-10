@@ -25,6 +25,8 @@ import AllStudentsPage from "./pages/dashboard/users/AllStudentsPage";
 import AllAdminsPage from "./pages/dashboard/users/AllAdminsPage";
 import AllTeachersPage from "./pages/dashboard/users/AllTeachersPage";
 import ViewPofilePage from "./pages/ViewProfilePage";
+import NewAdminPage from "./pages/dashboard/admin/NewAdminPage";
+import SuccessPage from "./pages/SuccessPage";
 
 // type Data = {
 //   data: string
@@ -72,11 +74,15 @@ function App() {
             <Route path="/ad/profile" element={<AdminProfile />} />
             <Route path="/ad/analysis" element={<AdminAnalysis />} />
 
+            {/* All Users Pages */}
             <Route path="/user/all" element={<AllUsersPage />} />
             <Route path="/student/all" element={<AllStudentsPage />} />
             <Route path="/admin/all" element={<AllAdminsPage />} />
             <Route path="/teacher/all" element={<AllTeachersPage />} />
             <Route path="/user/:userId" element={<ViewPofilePage />} />
+
+            {/* New Users Pages */}
+            <Route path="/admin/create-new-admin" element={<NewAdminPage/>}/>
           </Route>
 
           {/* Student Routes */}
@@ -90,6 +96,9 @@ function App() {
             {/* </Route> */}
           </Route>
         </Route>
+
+        {/* Success Page */}
+        <Route path="/success" element={<SuccessPage/>} />
 
         {/* Internal Server Error Page */}
         <Route path="/error" element={<ErrorPage />} />
@@ -126,7 +135,7 @@ function App() {
         pauseOnFocusLoss={false}
         pauseOnHover={false}
         draggable
-        autoClose={2500}
+        autoClose={2000}
       />
     </>
   );

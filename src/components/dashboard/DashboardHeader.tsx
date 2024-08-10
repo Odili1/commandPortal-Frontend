@@ -13,10 +13,11 @@ import { useLoadUser } from "../../hooks/useLoadUser";
 import { useEffect } from "react";
 import { selectUserId } from "../../features/store/slices/authSlice";
 import { idToRole } from "../../features/helpers/idToRole.helper";
-import { setAdminData } from "../../features/store/slices/adminSlice";
+// import { setAdminData } from "../../features/store/slices/adminSlice";
 import { IAdmin } from "../../features/interfaces/admin.interface";
-import { setStudentData } from "../../features/store/slices/studentSlice";
+// import { setStudentData } from "../../features/store/slices/studentSlice";
 import { IStudent } from "../../features/interfaces/student.interface";
+import { setLoggedInUserData } from "../../features/store/slices/userSlice";
 
 const DashboardHeader = () => {
   // Hooks
@@ -46,11 +47,12 @@ const DashboardHeader = () => {
     setUserData((prevState) => ({ ...prevState, lastName, avatar }));
 
     if (role === 'admin'){
-      dispatch(setAdminData({...response} as IAdmin))
+      // dispatch(setAdminData({...response} as IAdmin))
+      dispatch(setLoggedInUserData({...response} as IAdmin))
     }
     
     if (role === 'student'){
-      dispatch(setStudentData({...response} as IStudent))
+      dispatch(setLoggedInUserData({...response} as IStudent))
     }
   }, [loadUser, dispatch, role]);
 

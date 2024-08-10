@@ -8,7 +8,7 @@ import { IError } from "../features/interfaces/userInfo";
 import { idToRoleTitleCase } from "../features/helpers/idToRole.helper";
 import { toast } from "react-toastify";
 import { useLoadUser } from "../hooks/useLoadUser";
-import MainTitleHeader from "../components/dashboard/titleHeaders/MainTitleHeader";
+import SubTitleHeaders from "../components/dashboard/titleHeaders/SubTitleHeaders";
 
 const ViewPofilePage = () => {
   const { userId } = useParams<string>();
@@ -62,7 +62,7 @@ const ViewPofilePage = () => {
   return (
     <>
       {/* Title Header */}
-      <MainTitleHeader
+      <SubTitleHeaders
         pageName={`View Profile - ${idToRoleTitleCase(userId || "")} - ${
           userProfileData?.lastName || ""
         }`}
