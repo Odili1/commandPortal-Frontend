@@ -49,7 +49,7 @@ const LogOutModal = () => {
                   <div className="border-y-[1px] bg-slate-200"></div>
               </div>
               <div className="flex justify-end mt-6">
-                  <Link to={'/'} onClick={handleLogout} className="px-3 py-3 font-semibold bg-lightBlue border-none hover:bg-standardBlue rounded-md text-white">Logout</Link>
+                  <Link to={'/'} onClick={handleLogout} className="px-3 py-3 font-semibold bg-standardBlue border-none hover:bg-lightBlue rounded-md text-white">Logout</Link>
                   <button onClick={() => dispatch(setShowLogoutModal())} className="px-3 py-3 ml-2 font-semibold border-none bg-slate-200 hover:bg-slate-300 rounded-md">Cancel</button>
               </div>
 

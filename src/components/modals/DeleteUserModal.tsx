@@ -104,7 +104,7 @@ const DeleteUserModal = ({userData, setOpenDeleteUserModal, openDeleteUserModal}
                   />
             </div>
             <div className="flex justify-end mt-6">
-                <button onClick={handleDeleteUser} className="px-3 py-3 font-semibold bg-red-600 border-none hover:bg-red-800 rounded-md text-white">Delete</button>
+                <button onClick={handleDeleteUser} className="px-3 py-3 font-semibold bg-red-800 border-none hover:bg-red-600 rounded-md text-white">Delete</button>
                 <button onClick={() => setOpenDeleteUserModal(false)} className="px-3 py-3 ml-2 font-semibold border-none bg-slate-200 hover:bg-slate-300 rounded-md">Cancel</button>
             </div>
           </div>

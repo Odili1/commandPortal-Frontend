@@ -17,7 +17,7 @@ const NavList = ({nameClass}: NavListProp): React.JSX.Element => {
 
     const navObjects = navLists()
 
-    const logOutStyle = (medium: boolean = false) => medium ? 'text-fontGrayColor text-xl md:border-b-2 md:hover:text-standardBlue md:font-semibold md:cursor-pointer' : 'text-fontDarkColor py-3 pl-3 mb-5 font-medium rounded-md'
+    const logOutStyle = (medium: boolean = false) => medium ? 'text-xl md:border-b-2 md:hover:text-red-500 md:font-semibold md:cursor-pointer flex gap-x-2 items-center' : 'text-xl text-red-800 py-3 pl-3 mb-5 font-medium rounded-md flex gap-x-2 items-center'
 
     const handleLogout = () => {
         // Close the SideBar Modal
@@ -31,12 +31,24 @@ const NavList = ({nameClass}: NavListProp): React.JSX.Element => {
         {navObjects?.map((obj, i) => {
             if (obj.to === '/logout'){
                 return (
-                    <div onClick={handleLogout} className={`${logOutStyle()} md:${logOutStyle(true)}`} key={i}>{obj.name}</div>
+                    <div onClick={handleLogout} className={`${logOutStyle()} md:${logOutStyle(true)}`} key={i}>
+                        <obj.icon
+                            fontSize={"20px"}
+                            className="hidden h-5 w-8 rounded-lg md:block"
+                        />
+                        {obj.name}
+                    </div>
                 )
             }
 
             return (
-                <NavLink onClick={() => dispatch(setShowSideBarModal())} className={nameClass} key={i} to={obj.to}>{obj.name}</NavLink>
+                <NavLink onClick={() => dispatch(setShowSideBarModal())}  key={i} to={obj.to} className={nameClass}>
+                    <obj.icon
+                        fontSize={"20px"}
+                        className="h-5 w-9 hidden rounded-lg md:block"
+                    />
+                    {obj.name}
+                </NavLink>
             )
         })}
     </>

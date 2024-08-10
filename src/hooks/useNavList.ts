@@ -1,8 +1,10 @@
+import { IconType } from "react-icons";
 import { idToRole } from "../features/helpers/idToRole.helper"
 import { useAppSelector } from "../features/store/hooks"
 import { selectUserId } from "../features/store/slices/authSlice"
+import {FaAddressBook, FaAddressCard, FaBookOpen, FaChartSimple, FaFileLines, FaLandmark, FaRightFromBracket} from "react-icons/fa6";
 
-type useNavListReturnType = () => {to: string, name: string}[] | undefined
+type useNavListReturnType = () => {to: string, name: string, icon: IconType}[] | undefined
 
 export const useNavList = (): useNavListReturnType => {
     const userId = useAppSelector(selectUserId) || ''
@@ -11,34 +13,27 @@ export const useNavList = (): useNavListReturnType => {
 
     // Define Nav Lists for Different Users
     const adminNavList = [
-        {to: 'ad/dashboard', name: 'Dashboard'},
-        {to: 'ad/profile', name: 'Profile'},
-        {to: 'ad/analysis', name: 'Analysis'},
-        // {to: 'ad/analysis', name: 'Analysis'},
-        // {to: 'ad/analysis', name: 'Analysis'},
-        // {to: 'ad/analysis', name: 'Analysis'},
-        // {to: 'ad/analysis', name: 'Analysis'},
-        // {to: 'ad/analysis', name: 'Analysis'},
-        // {to: 'ad/analysis', name: 'Analysis'},
-        // {to: 'ad/analysis', name: 'Analysis'},
-        // {to: 'ad/analysis', name: 'Analysis'},
-        // {to: 'ad/analysis', name: 'Analysis'},
-        {to: '/logout', name: 'Logout'}   
+        {to: 'ad/dashboard', "icon": FaAddressCard, name: 'Dashboard'},
+        {to: 'ad/profile', "icon": FaAddressBook, name: 'Profile'},
+        {to: 'ad/analysis', "icon": FaChartSimple, name: 'Analysis'},
+        {to: '/logout', "icon": FaRightFromBracket, name: 'Logout'}   
     ]
-
+    
     const teacherNavList = [
-        {to: 'th/dashboard', name: 'Dashboard'},
-        {to: '/logout', name: 'Logout'},     
+        {to: 'th/dashboard', "icon": FaAddressCard, name: 'Dashboard'},
+        {to: 'th/profile', "icon": FaAddressBook, name: 'Profile'},
+        {to: 'th/analysis', "icon": FaChartSimple, name: 'Analysis'},
+        {to: '/logout', "icon": FaRightFromBracket, name: 'Logout'},     
     ]
 
     const studentNavList = [
-        {to: 'st/dashboard', name: 'Dashboard'},
-        {to: 'st/profile', name: 'Profile'},
-        {to: 'st/subjects', name: 'Subjects'},
-        {to: 'st/bursary', name: 'Bursary'},
-        {to: 'st/results', name: 'Results'},
-        {to: 'st/analysis', name: 'Student Analysis'},
-        {to: '/logout', name: 'Logout'}   
+        {to: 'st/dashboard', "icon": FaAddressCard, name: 'Dashboard'},
+        {to: 'st/profile', "icon": FaAddressBook, name: 'Profile'},
+        {to: 'st/subjects', "icon": FaBookOpen, name: 'Subjects'},
+        {to: 'st/bursary', "icon": FaLandmark, name: 'Bursary'},
+        {to: 'st/results', "icon": FaFileLines, name: 'Results'},
+        {to: 'st/analysis', "icon": FaChartSimple, name: 'Student Analysis'},
+        {to: '/logout', "icon": FaRightFromBracket, name: 'Logout'}   
     ]
 
     const navList = () => {
