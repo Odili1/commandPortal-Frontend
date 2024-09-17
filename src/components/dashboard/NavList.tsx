@@ -34,7 +34,7 @@ const NavList = ({nameClass}: NavListProp): React.JSX.Element => {
                     <div onClick={handleLogout} className={`${logOutStyle()} md:${logOutStyle(true)}`} key={i}>
                         <obj.icon
                             fontSize={"20px"}
-                            className="hidden h-5 w-8 rounded-lg md:block"
+                            className="hidden h-5 w-9 rounded-lg md:block"
                         />
                         {obj.name}
                     </div>

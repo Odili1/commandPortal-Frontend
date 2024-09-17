@@ -1,6 +1,10 @@
+import { userDataType } from "../../features/helpers/typeGuards.helper";
+import { useAppSelector } from "../../features/store/hooks";
+import { selectUserId } from "../../features/store/slices/authSlice";
 
 
 type ProfileOptionsModalPropType = {
+  userData: userDataType,
   openOptionsModal: boolean,
   setOpenEditProfileModal:  React.Dispatch<React.SetStateAction<boolean>>,
   setOpenOptionsModal: React.Dispatch<React.SetStateAction<boolean>>,
@@ -9,11 +13,9 @@ type ProfileOptionsModalPropType = {
 }
 
 
-const ProfileOptionsModal = ({openOptionsModal, setOpenEditProfileModal, setOpenOptionsModal, setOpenChangePasswordModal, setOpenDeleteUserModal}: ProfileOptionsModalPropType) => {
-  // const options = [
-  //   { to: "/profile/edit", optionName: "Edit Profile" },
-  //   { to: "/profile/changePassword", optionName: "Change Password" },
-  // ];
+const ProfileOptionsModal = ({userData, openOptionsModal, setOpenEditProfileModal, setOpenOptionsModal, setOpenChangePasswordModal, setOpenDeleteUserModal}: ProfileOptionsModalPropType) => {
+  const loggedInUserId = useAppSelector(selectUserId)
+
   console.log(`Profile Option Modal`);
 
   const handleClickChangePassword = () => {
@@ -38,7 +40,7 @@ const ProfileOptionsModal = ({openOptionsModal, setOpenEditProfileModal, setOpen
     >
       <button className="p-2 hover:bg-gray-500 text-left hover:text-gray-900 hover:rounded-md hover:font-semibold transition-all ease-in-out delay-75 duration-150 cursor-pointer" onClick={handleClickEditProfile}>Edit Profile</button>
       <button className="p-2 border-t-2 border-gray-700 hover:bg-gray-500 hover:text-gray-900 text-left hover:rounded-md hover:font-semibold transition-all ease-in-out delay-75 duration-150 cursor-pointer" onClick={handleClickChangePassword}>Change Password</button>
-      <button className="p-2 border-t-2 border-gray-700 hover:bg-gray-500 hover:text-gray-900 text-left hover:rounded-md hover:font-semibold transition-all ease-in-out delay-75 duration-150 cursor-pointer" onClick={handleClickDelete}>Delete User</button>
+      <button className={`${loggedInUserId === userData?.userId ? 'hidden' : 'block'} p-2 border-t-2 border-gray-700 hover:bg-gray-500 hover:text-gray-900 text-left hover:rounded-md hover:font-semibold transition-all ease-in-out delay-75 duration-150 cursor-pointer`} onClick={handleClickDelete}>Delete User</button>
       {/* {options.map((option, i) => (
         <Link
           to={option.to}

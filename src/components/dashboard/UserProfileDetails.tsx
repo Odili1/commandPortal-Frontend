@@ -110,6 +110,7 @@ const UserProfileDetails = ({ userData }: { userData: userDataType }) => {
                   <FaEllipsis fontSize={"30px"} />
                 </button>
                 <ProfileOptionsModal
+                  userData={userData}
                   setOpenEditProfileModal={setOpenEditProfileModal}
                   openOptionsModal={openOptionsModal}
                   setOpenOptionsModal={setOpenOptionsModal}
